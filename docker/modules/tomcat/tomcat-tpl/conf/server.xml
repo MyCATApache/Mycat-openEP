@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<Server port="8005" shutdown="SHUTDOWN">
+    <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+    <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="off"/>
+    <Listener className="org.apache.catalina.core.JasperListener"/>
+    <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
+    <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
+    <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
+
+    <GlobalNamingResources>
+        <Resource name="UserDatabase"
+                  auth="Container"
+                  type="org.apache.catalina.UserDatabase"
+                  factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+                  pathname="conf/tomcat-users.xml"/>
+
+<!--        <Resource name="jdbc/demo"
+                  auth="Container"
+                  type="javax.sql.DataSource"
+                  factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+                  testWhileIdle="true"
+                  validationQuery="select 1"
+                  validationInterval="30000"
+                  timeBetweenEvictionRunsMillis="30000"
+                  maxActive="100"
+                  minIdle="5"
+                  maxWait="5000"
+                  initialSize="10"
+                  removeAbandoned="true"
+                  removeAbandonedTimeout="60"
+                  logAbandoned="true"
+                  minEvictableIdleTimeMillis="30000"
+                  jmxEnabled="true"
+                  jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
+                  driverClassName="com.mysql.jdbc.Driver"
+                  username="demo"
+                  password="demo"
+                  url="jdbc:mysql://localhost:3306/demo?useUnicode=true&amp;characterEncoding=utf8"/>-->
+    </GlobalNamingResources>
+
+    <Service name="Catalina">
+
+        <Connector
+                port="8080"
+                protocol="HTTP/1.1"
+                redirectPort="8443"
+                maxThreads="200"
+                minSpareThreads="4"
+                connectionTimeout="30000"
+                keepAliveTimeout="5000"
+                disableUploadTimeout="true"
+                useBodyEncodingForURI="true"
+                URIEncoding="UTF-8"
+                enableLookups="false"/>
+
+<!--        <Connector
+                port="8009"
+                protocol="AJP/1.3"
+                redirectPort="8443"
+                maxThreads="200"
+                minSpareThreads="4"
+                connectionTimeout="30000"
+                keepAliveTimeout="5000"
+                useBodyEncodingForURI="true"
+                URIEncoding="UTF-8"
+                enableLookups="false"/>-->
+
+        <Engine name="Catalina" defaultHost="localhost">
+            <Realm className="org.apache.catalina.realm.LockOutRealm">
+                <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
+            </Realm>
+            <Host name="localhost" appBase="webapps" unpackWARs="true" autoDeploy="true"></Host>
+        </Engine>
+    </Service>
+</Server>

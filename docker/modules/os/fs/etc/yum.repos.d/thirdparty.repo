@@ -1,0 +1,58 @@
+[epel]
+name=Extra Packages for Enterprise Linux 6 - $basearch
+baseurl=http://mirrors.aliyun.com/epel/6/$basearch
+failovermethod=priority
+enabled=1
+gpgcheck=0
+
+[rpmforge]
+name=RHEL $releasever - RPMforge.net - dag
+baseurl=http://apt.sw.be/redhat/el6/en/$basearch/rpmforge
+mirrorlist = http://mirrorlist.repoforge.org/el6/mirrors-rpmforge
+enabled=1
+gpgcheck=0
+
+[rpmforge-extras]
+name=RHEL $releasever - RPMforge.net - extras
+baseurl=http://apt.sw.be/redhat/el6/en/$basearch/extras
+mirrorlist=http://mirrorlist.repoforge.org/el6/mirrors-rpmforge-extras
+enabled=0
+gpgcheck=0
+
+[remi]
+name=Les RPM de remi pour Enterprise Linux 6 - $basearch
+baseurl=http://rpms.famillecollet.com/enterprise/6/remi/$basearch/
+mirrorlist=http://rpms.famillecollet.com/enterprise/6/remi/mirror
+enabled=0
+gpgcheck=0
+
+[remi-php56]
+name=Les RPM de remi de PHP 5.6 pour Enterprise Linux 6 - $basearch
+baseurl=http://rpms.famillecollet.com/enterprise/6/php56/$basearch/
+mirrorlist=http://rpms.famillecollet.com/enterprise/6/php56/mirror
+enabled=0
+gpgcheck=0
+
+[mysql56-community]
+name=MySQL 5.6 Community Server
+baseurl=http://repo.mysql.com/yum/mysql-5.6-community/el/6/$basearch/
+enabled=0
+gpgcheck=0
+
+[nginx]
+name=Nginx Repo
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+enabled=0
+gpgcheck=0
+
+[zeroc-ice]
+name=Ice 3.5 for RHEL $releasever - $basearch
+baseurl=http://www.zeroc.com/download/Ice/3.5/el$releasever/$basearch
+enabled=0
+gpgcheck=0
+
+[priv]
+name=Priv Yum Repository
+baseurl=http://127.0.0.1/yum
+enabled=0
+gpgcheck=0

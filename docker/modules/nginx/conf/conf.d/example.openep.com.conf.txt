@@ -1,0 +1,16 @@
+server {
+    server_name example.openep.com.conf;
+
+    location /fcgiexample {
+        root /opt/www/phpexample;
+        try_files $uri $uri/ /index.php;
+        include php.conf;
+        include expire.conf;
+    }
+
+    location /proxyexample {
+        proxy_pass http://tomcat;
+    }
+
+    access_log /var/log/nginx/example.openep.com.log main;
+}
