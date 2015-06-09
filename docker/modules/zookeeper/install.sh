@@ -8,6 +8,7 @@ dest='/opt/zookeeper'
 
 tar zxf ${pkg} -C /opt
 mv ${dest}-${ver} ${dest}
+rm -rf ${dest}/src
 cp zoo.cfg ${dest}/conf
 mkdir -p /opt/data/zookeeper
 

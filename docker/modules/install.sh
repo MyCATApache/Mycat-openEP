@@ -16,3 +16,4 @@ done
 # Cleanup
 rm -rf /tmp/*
 yum clean all
+rm -rf /var/cache/yum/x86_64/6/*

@@ -6,9 +6,9 @@ dest='/opt/javahome/probe'
 
 [ -f "../cache/${pkg}" ] && pkg="../cache/${pkg}" || wget https://github.com/psi-probe/psi-probe/releases/download/${ver}/${pkg}
 
-unzip ${pkg} -d ${dest}
+unzip -qq ${pkg} -d ${dest}
 cd ${dest}
-unzip probe.war
+unzip -qq probe.war
 rm probe.war
 
 cat > /opt/tomcat/conf/Catalina/localhost/probe.xml << EOF

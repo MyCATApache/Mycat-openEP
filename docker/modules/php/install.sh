@@ -1,6 +1,7 @@
 #!/bin/bash
 
 yum -y --enablerepo=remi,remi-php56 install php php-fpm php-mysqlnd php-opcache php-mbstring php-mcrypt php-soap
+rpm -e -nodeps --nodeps redhat-logos
 
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 100M/g' /etc/php.ini
 sed -i 's/post_max_size = 8M/post_max_size = 100M/g' /etc/php.ini

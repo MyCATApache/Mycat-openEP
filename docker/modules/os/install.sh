@@ -7,6 +7,7 @@ ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
 ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
 sed -ri 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
 echo "UseDNS no" >> /etc/ssh/sshd_config
+sed -i "s/#Port 22/Port 2222/" /etc/ssh/sshd_config
 sed -i "s/GSSAPIAuthentication yes/GSSAPIAuthentication no/" /etc/ssh/sshd_config
 sed -i "s/GSSAPICleanupCredentials yes/GSSAPICleanupCredentials no/" /etc/ssh/sshd_config
 mkdir -p /root/.ssh && chown root.root /root && chmod 700 /root/.ssh
@@ -19,7 +20,7 @@ date
 
 # Yum
 yum -y update
-yum -y --enablerepo=rpmforge-extras install bash-completion autojump python-pip htop ncdu dstat iotop iftop nload nethogs
+yum -y --enablerepo=rpmforge-extras install samba bash-completion autojump python-pip htop ncdu dstat iotop iftop nload nethogs
 
 # Supervisor
 pip install supervisor
@@ -30,6 +31,35 @@ sed -i 's/^\$ModLoad imklog/#\$ModLoad imklog/g' /etc/rsyslog.conf
 
 # Crontab
 sed 's/session    required   pam_loginuid.so/#session    required   pam_loginuid.so/g' /etc/pam.d/crond
+
+# Samba
+cat > /etc/samba/smb.conf << EOF
+[global]
+    workgroup = workgroup
+    server string = Openep Files Server
+    netbios name = openepfs
+    security = user
+    load printers = no
+    printing = bsd
+    printcap name = /dev/null
+    disable spoolss = yes
+    hide dot files = no
+    passdb backend = smbpasswd
+    syslog only = no
+    follow symlinks = yes
+    wide links = yes
+    unix extensions  = no
+[root]
+    comment = root
+    path = /
+    browseable = yes
+    guest ok = no
+    writable = yes
+    write list = root
+
+EOF
+echo -e '123456\n123456'|smbpasswd -sa root
+
 
 # Env
 mkdir -p /opt/extdata
