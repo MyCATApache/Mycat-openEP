@@ -7,29 +7,29 @@ gpgcheck=0
 
 [rpmforge]
 name=RHEL $releasever - RPMforge.net - dag
-baseurl=http://apt.sw.be/redhat/el6/en/$basearch/rpmforge
-mirrorlist = http://mirrorlist.repoforge.org/el6/mirrors-rpmforge
+baseurl=http://mirror.oss.maxcdn.com/repoforge/redhat/el6/en/$basearch/rpmforge
+#mirrorlist = http://mirrorlist.repoforge.org/el6/mirrors-rpmforge
 enabled=1
 gpgcheck=0
 
 [rpmforge-extras]
 name=RHEL $releasever - RPMforge.net - extras
-baseurl=http://apt.sw.be/redhat/el6/en/$basearch/extras
-mirrorlist=http://mirrorlist.repoforge.org/el6/mirrors-rpmforge-extras
+baseurl=http://mirror.oss.maxcdn.com/repoforge/redhat/el6/en/$basearch/extras
+#mirrorlist=http://mirrorlist.repoforge.org/el6/mirrors-rpmforge-extras
 enabled=0
 gpgcheck=0
 
 [remi]
 name=Les RPM de remi pour Enterprise Linux 6 - $basearch
-baseurl=http://rpms.famillecollet.com/enterprise/6/remi/$basearch/
-mirrorlist=http://rpms.famillecollet.com/enterprise/6/remi/mirror
+baseurl=http://rpms.remirepo.net/enterprise/6/remi/$basearch/
+#mirrorlist=http://rpms.famillecollet.com/enterprise/6/remi/mirror
 enabled=0
 gpgcheck=0
 
 [remi-php56]
 name=Les RPM de remi de PHP 5.6 pour Enterprise Linux 6 - $basearch
-baseurl=http://rpms.famillecollet.com/enterprise/6/php56/$basearch/
-mirrorlist=http://rpms.famillecollet.com/enterprise/6/php56/mirror
+baseurl=http://rpms.remirepo.net/enterprise/6/php56/$basearch/
+#mirrorlist=http://rpms.famillecollet.com/enterprise/6/php56/mirror
 enabled=0
 gpgcheck=0
 
@@ -53,6 +53,6 @@ gpgcheck=0
 
 [priv]
 name=Priv Yum Repository
-baseurl=http://127.0.0.1/yum
+baseurl=http://192.168.88.65/yum
 enabled=0
 gpgcheck=0
