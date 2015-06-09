@@ -32,15 +32,15 @@
 
 ### 3. 启动容器
 
-#host方式启动(共享宿主网络, 推荐, 但是只能启动一个实例)
+host方式启动(共享宿主网络, 推荐, 但是只能启动一个实例)
+```
 ./run-host.sh openep [containerName]
 ```
 
+bridge方式启动(docker私有网络, 默认)
 ```bash
-#bridge方式启动(docker私有网络, 默认)
 ./run.sh openep [containerName]
-
-
+```
 
 # 直接导入
 
@@ -51,16 +51,15 @@
 zcat openep-1.1.tgz | docker import - openep
 ```
 
-#host方式启动(共享宿主网络, 推荐, 但是只能启动一个实例)
+host方式启动(共享宿主网络, 推荐, 但是只能启动一个实例)
 ```bash
 ./run-import-host.sh openep [containerName]
 ```
 
-#bridge方式启动(docker私有网络, 默认)
+bridge方式启动(docker私有网络, 默认)
 ```bash
 ./run-import.sh openep [containerName]
 ```
-
 
 # 使用说明
 
@@ -104,7 +103,6 @@ zcat openep-1.1.tgz | docker import - openep
 5. 通过phpmyadmin管理mysql http://hostip/phpmyadmin
 
 *注1:所有密码都是root 123456*
-
 *注2:如果是nat方式启动,请先用docker ps查看对应映射端口*
 
 # 服务管理
@@ -121,11 +119,9 @@ zcat openep-1.1.tgz | docker import - openep
  - supervisorctl restart mycat
   重启服务
 
-  
 # Faq
 
 1. 如何查看映射的端口:
 docker ps
-
 
 [1]: http://www.widuu.com/chinese_docker/
