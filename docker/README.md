@@ -22,6 +22,11 @@
 
 因为国内访问dockerhub很慢, 已将镜像导入上传, [点击去下载](http://pan.baidu.com/s/1dDew2m1)
 
+导入:
+```bash
+zcat openep-1.1.tgz | docker import - openep
+```
+
 # 构建镜像
 
 ### 1. 构建centos基础镜像
