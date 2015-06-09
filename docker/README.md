@@ -10,8 +10,17 @@
 > * 采用supervisord作为启动工具, 强大高效
 > * 根据作者多年运维优化经验, 各组件做了充分配置优化, 占用内存小
 
-# docker入门指南
-[点击访问][1]
+# 第三方docker资料
+
+[docker入门指南][1]
+
+[mac docker安装手册][2]
+
+[windows docker安装手册][3]
+
+# 直接导入镜像
+
+因为国内访问dockerhub很慢, 已将镜像导入上传, [点击去下载](http://pan.baidu.com/s/1dDew2m1)
 
 # 构建镜像
 
@@ -28,9 +37,10 @@
 ./build.sh
 ```
 此命令将新建一个的名为 openep 的镜像
+
 *注: 依赖包较多, 可能会很慢, 稍安勿躁*
 
-### 3. 启动容器
+# 启动容器
 
 host方式启动(共享宿主网络, 推荐, 但是只能启动一个实例)
 ```
@@ -40,25 +50,6 @@ host方式启动(共享宿主网络, 推荐, 但是只能启动一个实例)
 bridge方式启动(docker私有网络, 默认)
 ```bash
 ./run.sh openep [containerName]
-```
-
-# 直接导入
-
-因为国内访问dockerhub很慢, 已将镜像导入上传, [点击去下载](http://pan.baidu.com/s/1dDew2m1)
-
-导入:
-```bash
-zcat openep-1.1.tgz | docker import - openep
-```
-
-host方式启动(共享宿主网络, 推荐, 但是只能启动一个实例)
-```bash
-./run-import-host.sh openep [containerName]
-```
-
-bridge方式启动(docker私有网络, 默认)
-```bash
-./run-import.sh openep [containerName]
 ```
 
 # 使用说明
@@ -103,6 +94,7 @@ bridge方式启动(docker私有网络, 默认)
 5. 通过phpmyadmin管理mysql http://hostip/phpmyadmin
 
 *注1:所有密码都是root 123456*
+
 *注2:如果是nat方式启动,请先用docker ps查看对应映射端口*
 
 # 服务管理
@@ -125,3 +117,5 @@ bridge方式启动(docker私有网络, 默认)
 docker ps
 
 [1]: http://www.widuu.com/chinese_docker/
+[2]: http://www.widuu.com/chinese_docker/installation/macos.html
+[3]: http://www.widuu.com/chinese_docker/installation/windows.html
