@@ -12,11 +12,14 @@
 
 # 第三方docker资料
 
+### [docker安装包快速下载](http://pan.baidu.com/s/1dDew2m1)
+
 [docker入门指南][1]
 
 [mac docker安装手册][2]
 
 [windows docker安装手册][3]
+
 
 # 直接导入镜像
 
@@ -46,6 +49,13 @@ zcat openep-1.1.tgz | docker import - openep
 *注: 依赖包较多, 可能会很慢, 稍安勿躁*
 
 # 启动容器
+
+下载启动脚本
+```
+wget https://raw.githubusercontent.com/MyCATApache/Mycat-openEP/master/docker/run.sh
+wget https://raw.githubusercontent.com/MyCATApache/Mycat-openEP/master/docker/run-host.sh
+chmod +x run*.sh
+```
 
 host方式启动(共享宿主网络, 推荐, 但是只能启动一个实例)
 ```bash
