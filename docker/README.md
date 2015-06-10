@@ -48,7 +48,7 @@ zcat openep-1.1.tgz | docker import - openep
 # 启动容器
 
 host方式启动(共享宿主网络, 推荐, 但是只能启动一个实例)
-```
+```bash
 ./run-host.sh openep [containerName]
 ```
 
@@ -64,7 +64,7 @@ bridge方式启动(docker私有网络, 默认)
 | 组件         |  开放端口  | 说明                                   |
 | ----         | -----      | ----                                   |
 | ssh          | 2222       | ssh服务                                |
-| supervisor   | 9901       | 服务管理                               |
+| supervisor   | 9001       | 服务管理                               |
 | samba        | 139,445    | 文件共享                               |
 | scm          |            | git                                    |
 | zsh          |            | 好用的shell                            |
@@ -120,6 +120,13 @@ bridge方式启动(docker私有网络, 默认)
 
 1. 如何查看映射的端口:
 docker ps
+
+2. 如何查看ice sdk安装地址
+```bash
+rpm -ql ice-java
+rpm -ql ice-php
+rpm -ql ice-python
+```
 
 [1]: http://www.widuu.com/chinese_docker/
 [2]: http://www.widuu.com/chinese_docker/installation/macos.html
