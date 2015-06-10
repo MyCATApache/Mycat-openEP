@@ -1,5 +1,7 @@
 #!/bin/bash
 
+hash febootstrap 2>/dev/null || yum -y install febootstrap
+
 febootstrap -i centos-release -i yum -i yum-utils \
 -i coreutils -i diffutils -i findutils -i iputils -i bind-utils -i net-tools \
 -i crontabs -i man -i which -i patch -i xz -i tar -i zip -i bzip2 -i unzip \
