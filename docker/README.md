@@ -27,7 +27,7 @@
 
 导入:
 ```bash
-zcat openep-1.1.tgz | docker import - openep
+gunzip -c openep-1.2.tgz | docker import - openep
 ```
 
 # 构建镜像
