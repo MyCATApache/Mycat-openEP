@@ -7,7 +7,7 @@ cp *.cfg /opt/ice
 
 cat > /etc/supervisord.d/ice.conf << EOF
 [program:ice-registry]
-command=/usr/bin/icegridregistry --Ice.Config=/opt/ice/registry.cfg
+command=icegridregistry --Ice.Config=/opt/ice/registry.cfg
 priority=501
 autorestart=true
 
