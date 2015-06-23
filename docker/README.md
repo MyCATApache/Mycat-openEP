@@ -24,10 +24,10 @@
 
 可以用Boot2Docker在Windows上安装，或者导入已经安装好整个平台的Redhat Atomict 虚机镜像
 虚机镜像的下载地址为百度盘：http://pan.baidu.com/s/1qWE8KFi
-虚机的用户名密码 root/123456
+虚机的用户名密码 root/mycat1314
 虚机网络，eth0为NAT网络，eth1为一个Host-Only的子网，子网网段为172.16.0.0/16 ，其中IP地址固定为172.16.88.8 ，需要自己配置VirtualBox或VM的网络并绑定到虚机的eth1网卡上。
 运行 docker ps -a 查询mycat ep的镜像
-dockefr start xxxxcontainID 启动镜像
+docker start xxxxcontainID 启动镜像
 
 浏览器访问 http://172.16.88.8:9001  用户名密码root/123456
 
