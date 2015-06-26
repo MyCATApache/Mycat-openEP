@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ver='1.4-RC'
-pkg="Mycat-server-${ver}-openep.tar.gz"
+pkg='Mycat-server-${ver}-openep.tar.gz'
 
-[ -f "../cache/${pkg}" ] && pkg="../cache/${pkg}" || wget https://raw.githubusercontent.com/MyCATApache/Mycat-download/master/1.4-RC/Mycat-server-1.4-RC-openep.tar.gz
+[ -f "../cache/${pkg}" ] && pkg="../cache/${pkg}" || wget https://raw.githubusercontent.com/MyCATApache/Mycat-download/master/${ver}/${pkg}
 
 tar zxf ${pkg} -C /opt
 cp run.sh /opt/mycat/bin
