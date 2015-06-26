@@ -1,6 +1,6 @@
 # Mycat Openep Dockerfile
 
-FROM centos:6.6
+FROM linzhiqiang/centos6
 MAINTAINER oznyang <oznyang@163.com>
 
 ADD modules/ /tmp/_dt/
