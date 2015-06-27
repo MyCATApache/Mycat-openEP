@@ -30,7 +30,7 @@ mkdir -p /var/log/supervisor
 sed -i 's/^\$ModLoad imklog/#\$ModLoad imklog/g' /etc/rsyslog.conf
 
 # Crontab
-sed 's/session    required   pam_loginuid.so/#session    required   pam_loginuid.so/g' /etc/pam.d/crond
+sed -i 's/session    required   pam_loginuid.so/#session    required   pam_loginuid.so/g' /etc/pam.d/crond
 
 # Samba
 cat > /etc/samba/smb.conf << EOF
