@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum -y install mysql-community-server
+yum -y --enablerepo=mysql56-community install mysql-community-server
 
 mkdir -p /opt/data/mysql
 mkdir -p /var/log/mysql
