@@ -4,7 +4,7 @@ ver='7.0.62'
 pkg="apache-tomcat-${ver}.tar.gz"
 dest='/opt/javahome'
 
-[ -f "../cache/${pkg}" ] && pkg="../cache/${pkg}" || wget http://apache.fayea.com/tomcat/tomcat-7/v${ver}/bin/${pkg}
+[ -f "../cache/${pkg}" ] && pkg="../cache/${pkg}" || wget http://dl.mycat.io/${pkg}
 
 mkdir -p ${dest}
 tar zxf ${pkg} -C ${dest}
