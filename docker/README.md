@@ -44,7 +44,7 @@ gunzip -c openep-1.2.tgz | docker import - openep
 
 # 构建镜像
 
-### 1. 构建centos基础镜像
+### 1. 构建centos基础镜像, 仅支持centos6
 
 ```bash
 ./centos.sh
