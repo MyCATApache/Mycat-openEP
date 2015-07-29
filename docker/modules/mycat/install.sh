@@ -7,6 +7,7 @@ pkg="Mycat-server-${ver}-openep.tar.gz"
 
 tar zxf ${pkg} -C /opt
 cp run.sh /opt/mycat/bin
+chmod 777 /opt/mycat/bin/run.sh
 
 sed -i 's/wrapper.java.initmemory=2048/wrapper.java.initmemory=128/g' /opt/mycat/conf/wrapper.conf
 sed -i 's/localhost:3316/localhost:3306/g' /opt/mycat/conf/schema.xml
