@@ -13,6 +13,7 @@ cd ${dest}
 ln -s apache-tomcat-${ver} tomcat
 mkdir ../tomcat
 cp -a tomcat-tpl/* ../tomcat
+chmod 777 ../tomcat/bin/run.sh
 
 cat > /etc/supervisord.d/tomcat.conf << EOF
 [program:tomcat]
