@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum -y --enablerepo=remi,remi-php56 install php php-fpm php-mysqlnd php-opcache php-mbstring php-mcrypt php-soap
+yum -y --enablerepo=remi,remi-php56 install php php-fpm php-mysqlnd php-opcache php-mbstring php-mcrypt php-soap php-gd
 rpm -e -nodeps --nodeps redhat-logos
 
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 100M/g' /etc/php.ini
