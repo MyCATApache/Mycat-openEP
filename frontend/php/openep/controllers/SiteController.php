@@ -4,8 +4,9 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 
-require 'Ice_ns.php';
+$icepath = Yii::getAlias("@vendor/ice/ice_ns/Ice_ns.php");
 $path = Yii::getAlias("@vendor/ticket/TicketServer.php");
+require_once ($icepath);
 require_once($path);
 
 class SiteController extends Controller
