@@ -1,0 +1,59 @@
+{
+    "name": "Mycat-openEP/openep-php",
+    "description": "Mycat开放电商PHP实现",
+    "keywords": ["Mycat", "openEP", "openep-php"],
+    "homepage": "https://github.com/sandy1890/Mycat-openEP",
+    "type": "project",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+                "name" : "sandy1890",
+                "email": "sandy1890@163.com",
+                "homepage": "https://github.com/sandy1890",
+                "role": "development"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/sandy1890/Mycat-openEP/issues?state=open",
+        "wiki": "https://github.com/sandy1890/Mycat-openEP/issues/wiki/",
+        "source": "https://github.com/sandy1890/Mycat-openEP/tree/master/frontend/php"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": ">=2.0.4",
+        "yiisoft/yii2-swiftmailer": "*"
+    },
+    "require-dev": {
+        "yiisoft/yii2-codeception": "*",
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-faker": "*"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "openep/runtime": "0777",
+                    "openep/web/assets": "0777",
+                    "openep/yii": "0755"
+                }
+            ],
+            "generateCookieValidationKey": [
+                "openep/config/web.php"
+            ]
+        },
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}

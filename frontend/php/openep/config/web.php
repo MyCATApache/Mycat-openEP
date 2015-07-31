@@ -4,6 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'OpenEP',
+    'name' => 'Mycat开放电商PHP实现',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],  
     'aliases' => [
@@ -14,15 +15,14 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'openep-php',
         ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => ['@app/views' => '@app/themes/default'],
+                'baseUrl' => '@web/themes/default',
+            ],
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
