@@ -23,7 +23,6 @@ class SiteController extends Controller
 			return $this->render('index',array(
 				'list' => $list,
 			));
-			var_dump($list);
 		}
 		catch(\Ice\LocalException $ex)
 		{			
