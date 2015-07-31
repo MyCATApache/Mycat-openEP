@@ -6,6 +6,7 @@ defined('YII_ENV') or define('YII_ENV', 'dev');
 // var_dump(__DIR__.'/../../');
 require(__DIR__ . '/../../vendor/autoload.php');
 require(__DIR__ . '/../../vendor/yiisoft/yii2/Yii.php');
+Yii::setAlias('openep', dirname(dirname(__DIR__)) . '/openep');
 
 $config = require(__DIR__ . '/../config/web.php');
 

@@ -6,10 +6,9 @@ $config = [
     'id' => 'OpenEP',
     'name' => 'Mycat开放电商PHP实现',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],  
-    'aliases' => [
-        '@vendor' =>  dirname(__DIR__).'/../vendor',
-    ],
+    'controllerNamespace' => 'openep\controllers',
+    'bootstrap' => ['log'],
+    'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

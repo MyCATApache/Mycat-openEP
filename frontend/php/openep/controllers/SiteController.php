@@ -1,5 +1,5 @@
 <?php
-namespace app\controllers;
+namespace openep\controllers;
 
 use Yii;
 use yii\web\Controller;

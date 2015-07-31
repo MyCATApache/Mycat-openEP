@@ -1,5 +1,8 @@
 <?php
 use yii\helpers\Html;
+use openep\assets\AppAsset;
+
+AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
