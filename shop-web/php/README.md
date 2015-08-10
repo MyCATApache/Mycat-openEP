@@ -2,6 +2,10 @@
 Mycat-openEP开放电商项目前端商城PHP实现
 ===
 
+###Demo示例截图###
+ ![Mycat-php-demo](Mycat-php-demo.png)
+
+ 
 本项目是Mycat-openEP的一部分，以Yii2框架实现的电商网站.不包含后台管理功能，只实现前端的商品展示及购买流程支付等电商功能．
 
 ###使用[百度云盘下载的docker镜像](http://pan.baidu.com/s/1dDew2m1)遇到的一些问题
@@ -102,5 +106,3 @@ ssh root@127.0.0.1 -p2222
 icegridadmin -u root -p 123456  --Ice.Default.Locator="IceGrid/Locator:tcp -h localhost -p 4061"
 server start TicketOrderServer1
 ```
-
- ![Mycat-php-demo](Mycat-php-demo.png)
