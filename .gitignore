@@ -13,3 +13,6 @@ hs_err_pid*
 
 # Docker
 docker/modules/cache/*
+
+# yii2
+frontend/php/openep/runtime/*

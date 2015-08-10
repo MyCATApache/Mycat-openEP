@@ -37,3 +37,7 @@ server start TicketOrderServer1
 * src/spring/TicketOrderServiceSpringImp.java，这就是大家熟知的Spring方式的实现类，
 如果本机客户端来访问上述服务，需要把ice locator地址改为 此Docker镜像所在主机的地址
 * src/iceclient.properties里修改IceLocator地址，运行IceTicketProject 里的 TestICE 访问上述服务
+
+#### 重新编辑PHP的IcePHP.so扩展
+Docker镜像中默认安装的php版本和IcePHP.so扩展不匹配，导致Ico无法使用，所以重新进行编译
+具体过程请迁步[至此](../shop-web/php/README.md) 
