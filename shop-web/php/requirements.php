@@ -1,4 +1,6 @@
 <?php
+phpinfo();
+exit;
 /**
  * Application requirement checker script.
  *

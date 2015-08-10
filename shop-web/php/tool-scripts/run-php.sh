@@ -49,5 +49,5 @@ else
     echo "说明:"
     echo "imageName           docker镜像ID"
     echo "containerName     启动的容器名称"
-    echo "hostWebRoot         宿主机上项目代码Mycat-openEP/frontend/php/目录绝对路径"
+    echo "hostWebRoot         宿主机上项目代码 'Mycat-openEP/shop-web/php/' 目录的绝对路径"
 fi
