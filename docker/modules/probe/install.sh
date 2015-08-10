@@ -4,7 +4,7 @@ ver='2.3.3'
 pkg="probe-${ver}.zip"
 dest='/opt/javahome/probe'
 
-[ -f "../cache/${pkg}" ] && pkg="../cache/${pkg}" || wget https://github.com/psi-probe/psi-probe/releases/download/${ver}/${pkg}
+[ -f "../cache/${pkg}" ] && pkg="../cache/${pkg}" || wget http://dl.mycat.io/${pkg}
 
 unzip -qq ${pkg} -d ${dest}
 cd ${dest}

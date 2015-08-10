@@ -53,6 +53,6 @@ gpgcheck=0
 
 [priv]
 name=Priv Yum Repository
-baseurl=http://192.168.88.65/yum
-enabled=0
+baseurl=http://dl.mycat.io/yum
+enabled=1
 gpgcheck=0

@@ -4,7 +4,7 @@ ver='3.4.6'
 pkg="zookeeper-${ver}.tar.gz"
 dest='/opt/zookeeper'
 
-[ -f "../cache/${pkg}" ] && pkg="../cache/${pkg}" || wget http://apache.fayea.com/zookeeper/zookeeper-${ver}/${pkg}
+[ -f "../cache/${pkg}" ] && pkg="../cache/${pkg}" || wget http://dl.mycat.io/${pkg}
 
 tar zxf ${pkg} -C /opt
 mv ${dest}-${ver} ${dest}

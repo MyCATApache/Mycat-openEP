@@ -25,6 +25,7 @@ yum -y --enablerepo=rpmforge-extras install samba bash-completion autojump pytho
 # Supervisor
 pip install supervisor
 mkdir -p /var/log/supervisor
+sed -i 's/meld3 >= 0.6.5/#meld3 >= 0.6.5/g' /usr/lib/python2.6/site-packages/supervisor-3.1.3-py2.6.egg-info/requires.txt
 
 # Rsyslog
 sed -i 's/^\$ModLoad imklog/#\$ModLoad imklog/g' /etc/rsyslog.conf
