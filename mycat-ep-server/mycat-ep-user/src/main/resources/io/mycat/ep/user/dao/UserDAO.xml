@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.mycat.ep.user.dao.UserDAO">
+	
+	<!-- 只有constant_name constant_value两列 -->
+	<select id="findIdByPhone" resultType="long" parameterType="io.mycat.ep.user.model.User">
+		select id from mycat_ep_user where phone=#{phone}
+	</select>
+	<select id="findIdByPhoneAndPassword" resultType="long">
+		select id from mycat_ep_user where phone=#{phone} and password=#{password}
+	</select>
+	<insert id="saveUser" parameterType="io.mycat.ep.user.model.User">
+		insert into mycat_ep_user(
+		mac,open_udid,idfa,os,os_version,phone,password,real_name,nick_name,id_card,regist_time,uptime
+		)values(
+		#{mac},#{openUdid},#{idfa},#{os},#{osVersion},#{phone},#{password},#{realName},#{nickName},#{idCard},#{registTime},#{uptime}
+		)
+	</insert>
+	<insert id="saveLoginSession" parameterType="io.mycat.ep.user.model.LoginSession">
+		insert into mycat_ep_login_session(
+		id,mac,open_udid,idfa,os,phone,last_login_time,token
+		)values(
+		#{id},#{mac},#{openUdid},#{idfa},#{os},#{phone},#{lastLoginTime},#{token}
+		)
+	</insert>
+	<select id="findLoginSession" resultType="io.mycat.ep.user.model.LoginSession">
+		select id, mac,open_udid as openUdid,idfa,os,phone,last_login_time as lastLoginTime, token 
+		from mycat_ep_login_session 
+		where id=#{userId}
+	</select>
+</mapper>
