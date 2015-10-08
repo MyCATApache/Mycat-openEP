@@ -15,6 +15,7 @@
         <sprint.boot.version>1.2.6.RELEASE</sprint.boot.version>
         <app.version>0.0.0.1-SNAPSHOT</app.version>
 		<parent.path>D:\docs\work\eclipse-luna\mycat\Mycat-openEP\mycat-ep-server\mycat-ep-parent</parent.path><!-- 这里改成相对路径就不好使了，谁知道怎么改的 -->
+		<lib.path>D:\docs\work\eclipse-luna\mycat\Mycat-openEP\mycat-ep-server\mycat-ep-lib</lib.path><!-- 这里改成相对路径就不好使了，谁知道怎么改的 -->
 		<app.dir>./build</app.dir>
 		<start-class>io.mycat.ep.Bootstrap</start-class>
     </properties>
@@ -278,21 +279,21 @@
 		    <artifactId>meJOR</artifactId>
 		    <version>201509211701</version>
 		    <scope>system</scope>
-			<systemPath>${parent.path}\lib\meJOR-201509211701.jar</systemPath>
+			<systemPath>${lib.path}\lib\meJOR-201509211701.jar</systemPath>
 		</dependency>
 		<dependency>
 		    <groupId>com.zeroc</groupId>
 		    <artifactId>ice</artifactId>
 		    <version>3.6.0</version>
 		    <scope>system</scope>
-			<systemPath>${parent.path}\lib\ice-3.6.0.jar</systemPath>
+			<systemPath>${lib.path}\lib\ice-3.6.0.jar</systemPath>
 		</dependency>
 		<dependency>
 		    <groupId>com.zeroc</groupId>
 		    <artifactId>icebox</artifactId>
 		    <version>3.6.0</version>
 		    <scope>system</scope>
-			<systemPath>${parent.path}\lib\icebox-3.6.0.jar</systemPath>
+			<systemPath>${lib.path}\lib\icebox-3.6.0.jar</systemPath>
 		</dependency>
 		<dependency>
             <groupId>org.mybatis</groupId>
