@@ -196,6 +196,7 @@ public class MagicData {
 	public static final String APP_ICE_PORT = "app.ice.port";
 	public static final String APP_ICE_INTERFACE = "app.ice.interface";
 	public static final String APP_ICE_IDENTITY = "app.ice.identity";
+	public static final String APP_ICE_IDENTITY_SPLITOR = "app.ice.identity.splitor";
 	public static final String APP_ICE_NAME = "app.ice.name";
 	public static final String APP_ICE_USER_SESSION_SERVICE = "app.ice.user.session.service";
 	public static final String USER_SESSION_lOCAL_CACHE_LIFE = "app.user.session.local.cache.life";
