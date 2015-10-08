@@ -279,21 +279,21 @@
 		    <artifactId>meJOR</artifactId>
 		    <version>201509211701</version>
 		    <scope>system</scope>
-			<systemPath>${lib.path}\lib\meJOR-201509211701.jar</systemPath>
+			<systemPath>${lib.path}\meJOR-201509211701.jar</systemPath>
 		</dependency>
 		<dependency>
 		    <groupId>com.zeroc</groupId>
 		    <artifactId>ice</artifactId>
 		    <version>3.6.0</version>
 		    <scope>system</scope>
-			<systemPath>${lib.path}\lib\ice-3.6.0.jar</systemPath>
+			<systemPath>${lib.path}\ice-3.6.0.jar</systemPath>
 		</dependency>
 		<dependency>
 		    <groupId>com.zeroc</groupId>
 		    <artifactId>icebox</artifactId>
 		    <version>3.6.0</version>
 		    <scope>system</scope>
-			<systemPath>${lib.path}\lib\icebox-3.6.0.jar</systemPath>
+			<systemPath>${lib.path}\icebox-3.6.0.jar</systemPath>
 		</dependency>
 		<dependency>
             <groupId>org.mybatis</groupId>
