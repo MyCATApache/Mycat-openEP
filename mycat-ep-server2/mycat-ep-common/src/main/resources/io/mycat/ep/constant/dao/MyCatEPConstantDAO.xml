@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.mycat.ep.constant.dao.MyCatEPConstantDAO">
+	
+	<!-- 只有constant_name constant_value两列 -->
+	<select id="findAll" resultType="map">
+		select constant_name as `key`,constant_value as `value` from mycat_ep_constant
+	</select>
+</mapper>

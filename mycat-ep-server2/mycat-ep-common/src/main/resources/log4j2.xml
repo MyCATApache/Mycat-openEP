@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<configuration status="info">  
+  <appenders>  
+    <Console name="Console" target="SYSTEM_OUT">  
+        <PatternLayout pattern="%d{yyyy-MM-dd,HH:mm:ss.SSS} %-5level %logger{36} - %msg%n"/>  
+    </Console>
+    <RollingRandomAccessFile name="RandomAccessFile" 
+    				  fileName="/data/www/mycat/mycat-ep.log"
+                      filePattern="/data/www/mycat/mycat-ep.%d{yyyy-MM-dd}.log"
+                      immediateFlush="false" 
+                      append="true">
+	    <PatternLayout>
+	        <Pattern>%d{yyyy-MM-dd,HH:mm:ss.SSS} %-5level - %msg%n</Pattern>
+	    </PatternLayout>
+	    <Policies>
+            <TimeBasedTriggeringPolicy modulate="true" interval="24"/>
+        </Policies>
+    </RollingRandomAccessFile>  
+  </appenders>  
+  <loggers>  
+      <AsyncRoot level="info" includeLocation="true">  
+          <AppenderRef ref="RandomAccessFile"/>  
+      </AsyncRoot>  
+  </loggers>  
+</configuration>
