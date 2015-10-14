@@ -16,8 +16,8 @@
         <spring.version>4.1.7.RELEASE</spring.version>
         <sprint.boot.version>1.2.6.RELEASE</sprint.boot.version>
         <app.version>0.0.0.1-SNAPSHOT</app.version>
-		<parent.path>${basedir}\..\mycat-ep-parent</parent.path><!-- 这里改成相对路径就不好使了，谁知道怎么改的 -->
-		<lib.path>${basedir}\..\mycat-ep-lib</lib.path><!-- 这里改成相对路径就不好使了，谁知道怎么改的 -->
+		<parent.path>${basedir}\..\mycat-ep-parent</parent.path>
+		<lib.path>${basedir}\..\mycat-ep-lib</lib.path>
 		<app.dir>./build</app.dir>
 		<start-class>io.mycat.ep.Bootstrap</start-class>
     </properties>
