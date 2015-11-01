@@ -26,16 +26,18 @@ import me.jor.common.GlobalObject;
 import me.jor.redis.JedisConnection;
 import me.jor.util.Help;
 import me.jor.util.MessageDigestUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserHandlerImpl extends _UserHandlerDisp{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2825731175957204308L;
-	
+	@Autowired
 	private JedisConnection redis;
+	@Autowired
 	private SMSSender smsSender;
+	@Autowired
 	private UserDAO userDAO;
 	
 

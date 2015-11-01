@@ -1,61 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-    xmlns:tx="http://www.springframework.org/schema/tx"
-    xsi:schemaLocation="
-            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
-            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-    
-    <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
-        <property name="poolProperties">
-            <bean class="org.apache.tomcat.jdbc.pool.PoolProperties">
-                <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-                
-                <property name="url" value="${test.jdbc.url}" />
-                <property name="username" value="${test.jdbc.username}" />
-                <property name="password" value="${test.jdbc.password}" />
-                
-                <property name="jmxEnabled" value="true"/>
-                <property name="testWhileIdle" value="true"/>
-                <property name="testOnBorrow" value="true"/>
-                <property name="testOnReturn" value="false"/>
-                <property name="validationInterval" value="30000"/>
-                <property name="validationQuery" value="SELECT 1"/>
-                <property name="timeBetweenEvictionRunsMillis" value="30000"/>
-                <property name="maxActive" value="1000"/>
-                <property name="initialSize" value="15"/>
-                <property name="maxWait" value="3000000"/>
-                <property name="minEvictableIdleTimeMillis" value="30000"/>
-                <property name="minIdle" value="15"/>
-                <property name="logAbandoned" value="false"/>
-                <property name="removeAbandoned" value="true"/>
-                <property name="removeAbandonedTimeout" value="60"/>
-                <property name="abandonWhenPercentageFull" value="75"/>
-                <property name="jdbcInterceptors" value="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"/>
-            </bean>
-        </property>
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-         <property name="jdbcUrl" value="${jdbc.url}"/>
-         <property name="username" value="${jdbc.username}"/>
-         <property name="password" value="${jdbc.password}"/>
-         <!-- Default settings -->
-         <!-- 控制自动提交行为 default：true -->
-         <property name="autoCommit" value="true"/>
-         <!--连接池获取的连接是否只读 default:false-->
-         <property name="readOnly" value="false"/>
-         <!--控制连接的事务隔离等级 default:none-->
-         <property name="transactionIsolation" value="none"/>
-         <!--设置catalog以便于支持查看catalogs ， 若不指定的话将直接使用 JDBC driver使用的 default:none-->
-         <property name="catalog" value="none"/>
-         <!--最大连接超时时间 default：30秒-->
-         <property name="connectionTimeout" value="30000"/>
-         <!--最大空闲超时时间 default：10分钟   -->
-         <property name="idleTimeout" value="600000"/>
-         <!--连接池中一个连接的最大生命周期 default：30分钟-->
-         <property name="maxLifetime" value="1800000 "/>
-         <property name="connectionTestQuery" value="select 1"/>
-         <property name="maximumPoolSize" value="100"/>
-         <property name="minimumIdle" value="10"/>
-    </bean>
+    <beans xmlns="http://www.springframework.org/schema/beans"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:context="http://www.springframework.org/schema/context"
+           xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+        <!-- 引入jdbc配置文件 -->
+        <context:property-placeholder location="classpath:jdbc.properties,classpath:jedis.properties" file-encoding="UTF-8"/>
+
+        <!-- 扫描文件 -->
+        <!--<context:component-scan base-package="io.mycat.**"/>-->
+
+        <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+              destroy-method="close" >
+            <property name="driverClassName">
+                <value>${jdbc.driver.className}</value>
+            </property>
+            <property name="url">
+                <value>${jdbc.url}</value>
+            </property>
+            <property name="username">
+                <value>${jdbc.username}</value>
+            </property>
+            <property name="password">
+                <value>${jdbc.password}</value>
+            </property>
+            <!-- 连接池最大使用连接数 -->
+            <property name="maxActive">
+                <value>${jdbc.maxActive}</value>
+            </property>
+            <!-- 初始化连接大小 -->
+            <property name="initialSize">
+                <value>${jdbc.initialSize}</value>
+            </property>
+            <!-- 获取连接最大等待时间 -->
+            <property name="maxWait">
+                <value>${jdbc.maxWait}</value>
+            </property>
+            <!-- 连接池最小空闲 -->
+            <property name="minIdle">
+                <value>${jdbc.minIdle}</value>
+            </property>
+            <!-- 自动清除无用连接 -->
+            <property name="removeAbandoned">
+                <value>true</value>
+            </property>
+            <!-- 清除无用连接的等待时间 -->
+            <property name="removeAbandonedTimeout">
+                <value>${jdbc.removeAbandonedTimeout}</value>
+            </property>
+            <!-- 连接属性 -->
+            <property name="connectionProperties">
+                <value>clientEncoding=UTF-8</value>
+            </property>
+        </bean>
+
+        <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+            <property name="dataSource" ref="dataSource" />
+        </bean>
+
+        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+            <property name="dataSource" ref="dataSource" />
+            <!-- 实体类所在的包 -->
+            <property name="typeAliasesPackage" value="io.mycat.ep.**.model" />
+        </bean>
+        <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+            <!-- dao接口所在的基包 -->
+            <property name="basePackage" value="io.mycat.ep.**.dao" />
+            <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        </bean>
+
 </beans>

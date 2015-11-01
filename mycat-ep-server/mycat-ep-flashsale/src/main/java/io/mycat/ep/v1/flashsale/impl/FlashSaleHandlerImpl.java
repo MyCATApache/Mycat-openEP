@@ -14,28 +14,19 @@ import io.mycat.ep.v1.flashsale._FlashBuyHandlerDisp;
 import me.jor.common.GlobalObject;
 import me.jor.redis.JedisConnection;
 import me.jor.util.Help;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FlashSaleHandlerImpl extends _FlashBuyHandlerDisp {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4008588744751821265L;
+	@Autowired
 	private JedisConnection redis;
+	@Autowired
 	private FlashSaleDAO flashSaleDAO;
-	public JedisConnection getRedis() {
-		return redis;
-	}
-	public void setRedis(JedisConnection redis) {
-		this.redis = redis;
-	}
-	public FlashSaleDAO getFlashSaleDAO() {
-		return flashSaleDAO;
-	}
-	public void setFlashSaleDAO(FlashSaleDAO flashSaleDAO) {
-		this.flashSaleDAO = flashSaleDAO;
-	}
-	@Override
+
+    @Override
 	public FlashSaleResult flashBuy(FlashSaleInfo sale, Current __current) {//整个逻辑都应该异步化，FLASH_SALES_Q应该分散到不同的REDIS实例
 		String json=redis.rpop(FlashSaleRedisKeyGenerator.generateFlashSaleQueue(redis,sale.goodsId));
 		//本模块应当提供一个加载抢购数据到redis的接口，供后台管理调用预先把flash_sales加载到redis，这部分以后实现

@@ -19,20 +19,15 @@ import io.mycat.ep.v1.order.OrderInfo;
 import io.mycat.ep.v1.order.OrderResult;
 import io.mycat.ep.v1.order.OrderedGoods;
 import io.mycat.ep.v1.order._OrderHandlerDisp;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class OrderHandlerImpl extends _OrderHandlerDisp{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2877940073174912574L;
+	@Autowired
 	private OrderDAO orderDAO;
-	public OrderDAO getOrderDAO() {
-		return orderDAO;
-	}
-	public void setOrderDAO(OrderDAO orderDAO) {
-		this.orderDAO = orderDAO;
-	}
 
 	@Override
 	public OrderResult makeOrder(OrderInfo info, Current __current) {

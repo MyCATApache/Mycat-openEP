@@ -21,5 +21,23 @@
        <app.encoding>UTF-8</app.encoding>
        <maven.build.timestamp.format>yyyy-MM-dd.HH:mm:ss</maven.build.timestamp.format>
     </properties>
-
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <targetPath>${project.build.directory}/config</targetPath>
+                <includes>
+                    <include>*.xml</include>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!--<targetPath>${project.build.directory}/</targetPath>-->
+                <includes>
+                    <include>io/mycat/ep/constant/dao/**</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>

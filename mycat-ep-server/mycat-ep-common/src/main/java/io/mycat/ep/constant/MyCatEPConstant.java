@@ -10,15 +10,20 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 import IceUtilInternal.StringUtil;
 import io.mycat.ep.constant.dao.MyCatEPConstantDAO;
 import me.jor.util.Help;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MyCatEPConstant implements ApplicationContextAware{
+
 	private static MyCatEPConstant instance;
+	@Autowired
 	private MyCatEPConstantDAO myCatEPConstantDAO;
 	private Map<String,String> props;
 	
