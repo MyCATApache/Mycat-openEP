@@ -21,6 +21,16 @@
        <app.encoding>UTF-8</app.encoding>
        <maven.build.timestamp.format>yyyy-MM-dd.HH:mm:ss</maven.build.timestamp.format>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>me.jor</groupId>
+            <artifactId>meJOR</artifactId>
+            <version>201509211701</version>
+            <scope>system</scope>
+            <systemPath>${lib.path}\meJOR-201509211701.jar</systemPath>
+        </dependency>
+    </dependencies>
+
     <build>
         <resources>
             <resource>

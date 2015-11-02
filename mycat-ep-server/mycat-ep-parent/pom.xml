@@ -16,8 +16,8 @@
         <spring.version>4.1.7.RELEASE</spring.version>
         <sprint.boot.version>1.2.6.RELEASE</sprint.boot.version>
         <app.version>0.0.0.1-SNAPSHOT</app.version>
-		<parent.path>${basedir}\..\mycat-ep-parent</parent.path>
-		<lib.path>${basedir}\..\mycat-ep-lib</lib.path>
+		<parent.path>${basedir}/../mycat-ep-parent</parent.path>
+		<lib.path>${pom.basedir}/../mycat-ep-lib</lib.path>
 		<app.dir>./build</app.dir>
 		<start-class>io.mycat.ep.Bootstrap</start-class>
     </properties>
@@ -49,6 +49,11 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </repository>
+        <repository>
+            <id>zeroc</id>
+            <name>repo zeroc ice</name>
+            <url>https://repo.zeroc.com/nexus/content/repositories/releases</url>
         </repository>
 	</repositories>
 	<distributionManagement>
@@ -281,28 +286,30 @@
             <version>2.4.0</version>
             <scope>compile</scope>
         </dependency>
-        
-        <dependency>
-		    <groupId>me.jor</groupId>
-		    <artifactId>meJOR</artifactId>
-		    <version>201509211701</version>
-		    <scope>system</scope>
-			<systemPath>${lib.path}\meJOR-201509211701.jar</systemPath>
-		</dependency>
 		<dependency>
 		    <groupId>com.zeroc</groupId>
 		    <artifactId>ice</artifactId>
-		    <version>3.6.0</version>
-		    <scope>system</scope>
-			<systemPath>${lib.path}\ice-3.6.0.jar</systemPath>
+		    <version>3.6.1</version>
+		    <scope>compile</scope>
 		</dependency>
 		<dependency>
 		    <groupId>com.zeroc</groupId>
 		    <artifactId>icebox</artifactId>
-		    <version>3.6.0</version>
-		    <scope>system</scope>
-			<systemPath>${lib.path}\icebox-3.6.0.jar</systemPath>
+		    <version>3.6.1</version>
+		    <scope>compile</scope>
 		</dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>icegrid</artifactId>
+            <version>3.6.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>icestorm</artifactId>
+            <version>3.6.1</version>
+            <scope>compile</scope>
+        </dependency>
 		<dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
@@ -333,7 +340,6 @@
 			<artifactId>groovy-all</artifactId>
 			<version>2.4.4</version>
 		</dependency>
-        <!--'com.alibaba:druid:1.0.14'-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
@@ -364,13 +370,14 @@
             <!--</plugin>-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
 
         </plugins>
     </build>

@@ -7,14 +7,17 @@
 	<name>mycat-ep-user</name>
 	<version>${app.version}</version>
 	<url>http://mycat.io</url>
-
+    <packaging>pom</packaging>
 	<parent>
         <groupId>io.mycat.ep</groupId>
         <artifactId>mycat-ep-parent</artifactId>
         <version>1.0.0</version>
         <relativePath>../mycat-ep-parent</relativePath>
     </parent>
-    
+    <modules>
+        <module>client</module>
+        <module>server</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>io.mycat.ep</groupId>
