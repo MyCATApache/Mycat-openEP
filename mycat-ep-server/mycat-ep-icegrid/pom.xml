@@ -1,0 +1,81 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <groupId>io.mycat.ep</groupId>
+	<artifactId>mycat-ep-icegrid</artifactId>
+    <packaging>pom</packaging>
+    <description>icegrid</description>
+	<name>mycat-ep-icegrid</name>
+    <version>1.0.0</version>
+	<url>http://mycat.io</url>
+    <properties>
+        <app.version>0.0.0.1-SNAPSHOT</app.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.mycat.ep</groupId>
+            <artifactId>mycat-ep-common</artifactId>
+            <version>${app.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.mycat.ep</groupId>
+            <artifactId>mycat-ep-user</artifactId>
+            <version>${app.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.mycat.ep</groupId>
+            <artifactId>mycat-ep-goods</artifactId>
+            <version>${app.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.mycat.ep</groupId>
+            <artifactId>mycat-ep-order</artifactId>
+            <version>${app.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.mycat.ep</groupId>
+            <artifactId>mycat-ep-flashsale</artifactId>
+            <version>${app.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.mycat.ep</groupId>
+            <artifactId>mycat-ep-receiver</artifactId>
+            <version>${app.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <!-- not append assembly id in release file name -->
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
