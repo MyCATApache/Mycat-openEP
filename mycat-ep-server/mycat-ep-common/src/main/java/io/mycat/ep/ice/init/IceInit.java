@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
+import io.mycat.ep.constant.MagicData;
 import io.mycat.ep.exception.UnknownRPCServiceExcepton;
 import io.mycat.ep.ice.proxy.IceProxy;
 import io.mycat.ep.util.ProcessInfo;
@@ -39,7 +40,9 @@ public class IceInit {
 		Ice.ObjectAdapter adapter=ic.createObjectAdapterWithEndpoints(
  				ProcessInfo.getAppIceAdapterName(), 
  				ProcessInfo.getAppIcePort());
-		adapter.add(object, Ice.Util.stringToIdentity(ProcessInfo.getAppIceIdentity()));
+		for(String identity:ProcessInfo.getAppIceIdentity().split(MagicData.APP_ICE_IDENTITY_SPLITOR)){
+			adapter.add(object, Ice.Util.stringToIdentity(identity));
+		}
 		adapter.activate();
 		log.info("APP "+ProcessInfo.getAppIceName()+" STARTED ON:"+Instant.now());
 		ic.waitForShutdown();

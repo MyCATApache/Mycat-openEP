@@ -13,7 +13,7 @@
         <groupId>io.mycat.ep</groupId>
         <artifactId>mycat-ep-parent</artifactId>
         <version>1.0.0</version>
-        <relativePath>../ep-parent</relativePath>
+        <relativePath>../mycat-ep-parent</relativePath>
     </parent>
 
     <properties>
