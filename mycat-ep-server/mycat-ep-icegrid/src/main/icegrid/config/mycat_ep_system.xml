@@ -45,7 +45,7 @@
                 <option>-Xmx512M</option>
                 <option>-Duser.timezone=Asia/Shanghai</option>
                 <option>-DAppId=LookBookServer${id}</option>
-                <option>cn.com.pencho.ice.server.Sl4jIceBoxServer</option>
+                <option>io.mycat.ep.ice.server.Sl4jIceBoxServer</option>
                 <!--<option>IceBox.Server</option>-->
                 <env>
                     CLASSPATH=${server.distrib}/mycat_ep_system/libs/:${server.distrib}/mycat_ep_system/libs/*:${server.distrib}/mycat_ep_system/config/:$CLASSPATH:.
