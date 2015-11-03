@@ -44,45 +44,43 @@
                 </properties>
                 <option>-Xmx512M</option>
                 <option>-Duser.timezone=Asia/Shanghai</option>
-                <option>-DAppId=LookBookServer${id}</option>
+                <option>-DAppId=Mycat_EP_Server${id}</option>
                 <option>io.mycat.ep.ice.server.Sl4jIceBoxServer</option>
                 <!--<option>IceBox.Server</option>-->
-                <env>
-                    CLASSPATH=${server.distrib}/mycat_ep_system/libs/:${server.distrib}/mycat_ep_system/libs/*:${server.distrib}/mycat_ep_system/config/:$CLASSPATH:.
-                </env>
+                <env>CLASSPATH=${server.distrib}/mycat_ep_system/libs/:${server.distrib}/mycat_ep_system/libs/*:${server.distrib}/mycat_ep_system/config/:$CLASSPATH:.</env>
                 <service name="UserHandler" entry="io.mycat.ep.v1.user.impl.UserServiceImpl">
-                    <adapter name="UserHandler" id="UserHandler{id}" endpoints="default"
+                    <adapter name="UserHandler" id="UserHandler${id}" endpoints="default"
                              replica-group="UserHandlerRep">
                     </adapter>
                 </service>
                 <service name="UserSessionHandler" entry="io.mycat.ep.v1.user.session.impl.UserSessionServiceImpl">
-                    <adapter name="UserSessionHandler" id="UserSessionHandler{id}" endpoints="default"
+                    <adapter name="UserSessionHandler" id="UserSessionHandler${id}" endpoints="default"
                              replica-group="UserSessionHandlerRep">
                     </adapter>
                 </service>
                 <service name="GoodsStorageManageHandler" entry="io.mycat.ep.v1.goods.stock.impl.GoodsStorageManageServiceImpl">
-                    <adapter name="GoodsStorageManageHandler" id="GoodsStorageManageHandler{id}" endpoints="default"
+                    <adapter name="GoodsStorageManageHandler" id="GoodsStorageManageHandler${id}" endpoints="default"
                              replica-group="GoodsStorageManageHandlerRep">
                     </adapter>
                 </service>
                 <service name="OrderHandler" entry="io.mycat.ep.v1.order.impl.OrderServiceImpl">
-                    <adapter name="OrderHandler" id="OrderHandler{id}" endpoints="default"
+                    <adapter name="OrderHandler" id="OrderHandler${id}" endpoints="default"
                              replica-group="OrderHandlerRep">
                     </adapter>
                 </service>
                 <service name="FlashBuyHandler" entry="io.mycat.ep.v1.flashsale.impl.FlashSaleServiceImpl">
-                    <adapter name="FlashBuyHandler" id="FlashBuyHandler{id}" endpoints="default"
+                    <adapter name="FlashBuyHandler" id="FlashBuyHandler${id}" endpoints="default"
                              replica-group="FlashBuyHandlerRep">
                     </adapter>
                 </service>
                 <service name="PurchaseReceiverHandler" entry="io.mycat.ep.v1.receiver.impl.PurchaseReceiverServiceImpl">
-                    <adapter name="PurchaseReceiverHandler" id="PurchaseReceiverHandler{id}" endpoints="default"
+                    <adapter name="PurchaseReceiverHandler" id="PurchaseReceiverHandler${id}" endpoints="default"
                              replica-group="PurchaseReceiverHandlerRep">
                     </adapter>
                 </service>
 
                 <distrib>
-                    <directory>lookbook</directory>
+                    <directory>mycat_ep_system</directory>
                 </distrib>
                 <property name="IceMX.Metrics.Debug.GroupBy" value="id"/>
                 <property name="IceMX.Metrics.Debug.Disabled" value="1"/>

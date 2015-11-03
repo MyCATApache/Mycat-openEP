@@ -11,22 +11,26 @@
     </dependencySets>
     <fileSets>
         <fileSet>
-            <outputDirectory>/</outputDirectory>
+            <outputDirectory>./</outputDirectory>
             <includes>
-                <include>README.md</include>
+                <include>../README.md</include>
             </includes>
         </fileSet>
         <fileSet>
-            <directory>../mycat-ep-lib/</directory>
+            <directory>../../mycat-ep-lib/</directory>
             <outputDirectory>icegrid/patch/mycat_ep_system/libs</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>../mycat-ep-common/target/config</directory>
+            <directory>../../mycat-ep-common/target/config</directory>
             <outputDirectory>icegrid/patch/mycat_ep_system/config</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>src/main/icegrid</directory>
-            <outputDirectory>/icegrid</outputDirectory>
+            <directory>../src/main/icegrid</directory>
+            <outputDirectory>icegrid</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>../src/main/resources/</directory>
+            <outputDirectory>icegrid/patch/mycat_ep_system/config</outputDirectory>
         </fileSet>
     </fileSets>
 </assembly>

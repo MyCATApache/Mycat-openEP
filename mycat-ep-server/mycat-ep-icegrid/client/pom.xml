@@ -5,14 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.mycat.ep</groupId>
-    <artifactId>mycat-ep-user-server</artifactId>
-    <version>0.0.0.1-SNAPSHOT</version>
+    <artifactId>mycat-ep-icegrid-client</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
     <parent>
         <groupId>io.mycat.ep</groupId>
-        <artifactId>mycat-ep-user</artifactId>
-        <version>${app.version}</version>
-        <relativePath>../../mycat-ep-user</relativePath>
+        <artifactId>mycat-ep-icegrid</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../../mycat-ep-icegrid</relativePath>
     </parent>
+
     <build>
         <sourceDirectory>../src/main/java</sourceDirectory>
         <resources>
@@ -28,6 +30,9 @@
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
+                    <includes>
+                        <include>**/io/mycat/ep/ice/**</include>
+                    </includes>
                 </configuration>
             </plugin>
         </plugins>

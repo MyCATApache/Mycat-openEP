@@ -75,7 +75,7 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- 
+        <!--
         <dependency>
             <groupId>org.csource.fastdfs</groupId>
             <artifactId>fastdfs-client</artifactId>

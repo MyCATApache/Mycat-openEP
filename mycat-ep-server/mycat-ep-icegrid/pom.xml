@@ -9,74 +9,105 @@
     <version>1.0.0</version>
 	<url>http://mycat.io</url>
     <properties>
-        <app.version>0.0.0.1-SNAPSHOT</app.version>
+        <server.version>0.0.0.1-SNAPSHOT</server.version>
+        <spring.version>4.1.7.RELEASE</spring.version>
     </properties>
-
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>local private nexus</name>
+            <url>http://nexus.mycat.io/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>spring-milestone</id>
+            <url>http://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>zeroc</id>
+            <name>repo zeroc ice</name>
+            <url>https://repo.zeroc.com/nexus/content/repositories/releases</url>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Internal Releases</name>
+            <url>http://nexus.mycat.io/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Internal Snapshots</name>
+            <url>http://nexus.mycat.io/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <modules>
+        <module>client</module>
+        <module>server</module>
+    </modules>
     <dependencies>
         <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-common</artifactId>
-            <version>${app.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-user-server</artifactId>
-            <version>${app.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-goods-server</artifactId>
-            <version>${app.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-order-server</artifactId>
-            <version>${app.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
             <scope>compile</scope>
         </dependency>
-
         <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-flashsale-server</artifactId>
-            <version>${app.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
             <scope>compile</scope>
         </dependency>
-
         <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-receiver-server</artifactId>
-            <version>${app.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>ice</artifactId>
+            <version>3.6.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>icebox</artifactId>
+            <version>3.6.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>icegrid</artifactId>
+            <version>3.6.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>icestorm</artifactId>
+            <version>3.6.1</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <!-- not append assembly id in release file name -->
-                    <appendAssemblyId>false</appendAssemblyId>
-                    <descriptors>
-                        <descriptor>src/main/assembly/assembly.xml</descriptor>
-                    </descriptors>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
