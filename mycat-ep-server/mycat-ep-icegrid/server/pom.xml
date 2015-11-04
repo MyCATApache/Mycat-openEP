@@ -53,6 +53,11 @@
             <version>${server.version}</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>io.mycat.ep</groupId>
+            <artifactId>mycat-ep-aop</artifactId>
+            <version>${server.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
