@@ -8,12 +8,6 @@
     <artifactId>mycat-ep-goods-client</artifactId>
     <version>0.0.0.1-SNAPSHOT</version>
 
-    <!--<parent>-->
-        <!--<groupId>io.mycat.ep</groupId>-->
-        <!--<artifactId>mycat-ep-goods</artifactId>-->
-        <!--<version>${app.version}</version>-->
-        <!--<relativePath>../../mycat-ep-goods</relativePath>-->
-    <!--</parent>-->
     <dependencies>
         <dependency>
             <groupId>io.mycat.ep</groupId>

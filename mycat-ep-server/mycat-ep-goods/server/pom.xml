@@ -13,6 +13,19 @@
         <version>${app.version}</version>
         <relativePath>../../mycat-ep-goods</relativePath>
     </parent>
+    <dependencies>
+        <dependency>
+            <groupId>io.mycat.ep</groupId>
+            <artifactId>mycat-ep-common</artifactId>
+            <version>${app.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.mycat.ep</groupId>
+            <artifactId>mycat-ep-icegrid-client</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
     <build>
         <sourceDirectory>../src/main/java</sourceDirectory>
         <resources>

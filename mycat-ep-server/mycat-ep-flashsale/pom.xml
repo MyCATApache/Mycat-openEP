@@ -19,12 +19,5 @@
         <module>client</module>
         <module>server</module>
     </modules>
-    <dependencies>
 
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-icegrid-client</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-    </dependencies>
 </project>

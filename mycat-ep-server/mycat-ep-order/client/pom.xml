@@ -8,13 +8,6 @@
     <artifactId>mycat-ep-order-client</artifactId>
     <version>0.0.0.1-SNAPSHOT</version>
 
-
-    <!--<parent>-->
-        <!--<groupId>io.mycat.ep</groupId>-->
-        <!--<artifactId>mycat-ep-order</artifactId>-->
-        <!--<version>${app.version}</version>-->
-        <!--<relativePath>../../mycat-ep-order</relativePath>-->
-    <!--</parent>-->
     <dependencies>
         <dependency>
             <groupId>io.mycat.ep</groupId>
