@@ -236,13 +236,12 @@
             <artifactId>jackson-datatype-jdk7</artifactId>
             <version>2.5.1</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>commons-logging</groupId>-->
-            <!--<artifactId>commons-logging</artifactId>-->
-            <!--<version>1.2</version>-->
-            <!--<scope>compile</scope>-->
-        <!--</dependency>-->
-
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+            <scope>compile</scope>
+        </dependency>
 		<dependency>
 			<groupId>com.lmax</groupId>
 			<artifactId>disruptor</artifactId>
@@ -328,7 +327,9 @@
         <module>../mycat-ep-order</module>
         <module>../mycat-ep-flashsale</module>
         <module>../mycat-ep-receiver</module>
+        <module>../mycat-ep-aop</module>
         <module>../mycat-ep-icegrid</module>
+
     </modules>
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>

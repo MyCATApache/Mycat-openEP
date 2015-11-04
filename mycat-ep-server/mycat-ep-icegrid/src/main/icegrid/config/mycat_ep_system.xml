@@ -45,9 +45,9 @@
                 <option>-Xmx512M</option>
                 <option>-Duser.timezone=Asia/Shanghai</option>
                 <option>-DAppId=Mycat_EP_Server${id}</option>
-                <option>io.mycat.ep.ice.server.Sl4jIceBoxServer</option>
-                <!--<option>IceBox.Server</option>-->
-                <env>CLASSPATH=${server.distrib}/mycat_ep_system/libs/:${server.distrib}/mycat_ep_system/libs/*:${server.distrib}/mycat_ep_system/config/:$CLASSPATH:.</env>
+                <!--<option>io.mycat.ep.ice.server.Sl4jIceBoxServer</option>-->
+                <option>IceBox.Server</option>
+                <env>CLASSPATH=${server.distrib}/mycat_ep_system/:${server.distrib}/mycat_ep_system/libs/*:${server.distrib}/mycat_ep_system/config/:$CLASSPATH:.</env>
                 <service name="UserHandler" entry="io.mycat.ep.v1.user.impl.UserServiceImpl">
                     <adapter name="UserHandler" id="UserHandler${id}" endpoints="default"
                              replica-group="UserHandlerRep">
@@ -57,6 +57,9 @@
                     <adapter name="UserSessionHandler" id="UserSessionHandler${id}" endpoints="default"
                              replica-group="UserSessionHandlerRep">
                     </adapter>
+                </service>
+                <service name="GoodsHandler" entry="io.mycat.ep.v1.goods.impl.GoodsHandlerServiceImpl">
+                    <adapter name="GoodsHandler" id="GoodsHandler${id}" endpoints="default" replica-group="GoodsHandlerRep"/>
                 </service>
                 <service name="GoodsStorageManageHandler" entry="io.mycat.ep.v1.goods.stock.impl.GoodsStorageManageServiceImpl">
                     <adapter name="GoodsStorageManageHandler" id="GoodsStorageManageHandler${id}" endpoints="default"
@@ -96,6 +99,10 @@
         <replica-group id="UserSessionHandlerRep">
             <load-balancing type="round-robin" n-replicas="0"/>
             <object identity="UserSessionHandler" type="::mycatep::UserSessionHandler"/>
+        </replica-group>
+        <replica-group id="GoodsHandlerRep">
+            <load-balancing type="round-robin" n-replicas="0"/>
+            <object identity="GoodsHandler" type="::mycatep::GoodsHandler"/>
         </replica-group>
         <replica-group id="GoodsStorageManageHandlerRep">
             <load-balancing type="round-robin" n-replicas="0"/>
