@@ -1,19 +1,18 @@
 package io.mycat.ep.v1.receiver.impl;
 
-import Ice.*;
+import Ice.Identity;
+import Ice.ObjectAdapter;
 import io.mycat.ep.ice.server.AbstractIceBoxService;
+import io.mycat.ep.util.SpringUtil;
 import io.mycat.ep.v1.receiver.PurchaseReceiverHandler;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * Created by ILEX on 2015/11/1.
  */
-@Service
+
 public class PurchaseReceiverServiceImpl extends AbstractIceBoxService {
 
-    @Autowired
-    private PurchaseReceiverHandler purchaseReceiverHandler;
+    private PurchaseReceiverHandler purchaseReceiverHandler = SpringUtil.getBean(PurchaseReceiverHandlerImpl.class);
 
     @Override
     protected void addMyIceServiceObjFacets(ObjectAdapter adapter, Identity id) {

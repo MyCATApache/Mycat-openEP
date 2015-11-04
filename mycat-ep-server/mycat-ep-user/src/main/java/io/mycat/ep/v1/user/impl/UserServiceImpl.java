@@ -1,19 +1,17 @@
 package io.mycat.ep.v1.user.impl;
 
-import Ice.*;
+import Ice.Identity;
+import Ice.ObjectAdapter;
 import io.mycat.ep.ice.server.AbstractIceBoxService;
+import io.mycat.ep.ice.server.Sl4jIceBoxServer;
+import io.mycat.ep.util.SpringUtil;
 import io.mycat.ep.v1.user.UserHandler;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * Created by ILEX on 2015/11/1.
  */
-@Service
-public class UserServiceImpl  extends AbstractIceBoxService {
 
-    @Autowired
-    private UserHandler userHandler;
+public class UserServiceImpl  extends AbstractIceBoxService {
 
     @Override
     protected void addMyIceServiceObjFacets(ObjectAdapter adapter, Identity id) {
@@ -22,6 +20,6 @@ public class UserServiceImpl  extends AbstractIceBoxService {
 
     @Override
     public Ice.Object createMyIceServiceObj(String[] args) {
-        return userHandler;
+        return  SpringUtil.getBean(UserHandlerImpl.class);
     }
 }

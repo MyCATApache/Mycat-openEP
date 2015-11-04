@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="info">
+        <appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+            <layout class="org.apache.log4j.PatternLayout">
+                <param name="ConversionPattern" value="%d{MM-dd HH:mm:ss.SSS}  %5p [%t] (%F:%L) -%m%n" />
+            </layout>
+        </appender>
+        <!-- 输出到日志文件 每天一个日志  -->
+        <appender name="filelog_daily" class="org.apache.log4j.DailyRollingFileAppender">
+            <param name="File" value="./logs/${AppId}.log" />
+            <param name="DatePattern" value="'daily.'yyyy-MM-dd'.log'" />
+            <layout class="org.apache.log4j.PatternLayout">
+                <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] (%c:%L) - %m%n" />
+            </layout>
+        </appender>
+
+
+        <appender name="FileAppender" class="org.apache.log4j.FileAppender">
+            <param name="File" value="./logs/${AppId}.log"/>
+            <layout class="org.apache.log4j.PatternLayout">
+                <param name="ConversionPattern"
+                       value="%d{MM-dd HH:mm:ss.SSS}  %5p [%t] (%F:%L) -%m%n" />
+            </layout>
+        </appender>
+
+        <root >
+            <level value="info" />
+            <appender-ref ref="filelog_daily" />
+        </root>
+
+</configuration>

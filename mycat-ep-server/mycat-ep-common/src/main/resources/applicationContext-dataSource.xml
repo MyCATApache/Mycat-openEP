@@ -4,10 +4,10 @@
            xmlns:context="http://www.springframework.org/schema/context"
            xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
         <!-- 引入jdbc配置文件 -->
-        <context:property-placeholder location="classpath:jdbc.properties,classpath:jedis.properties" file-encoding="UTF-8"/>
+        <context:property-placeholder location="classpath:jdbc.properties,classpath:jedis.properties,classpath:iceclient.properties" file-encoding="UTF-8"/>
 
         <!-- 扫描文件 -->
-        <!--<context:component-scan base-package="io.mycat.**"/>-->
+        <context:component-scan base-package="io.mycat.ep"/>
 
         <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
               destroy-method="close" >
