@@ -20,12 +20,7 @@
         <module>server</module>
     </modules>
     <dependencies>
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-common</artifactId>
-            <version>${app.version}</version>
-            <scope>compile</scope>
-        </dependency>
+
         <dependency>
             <groupId>io.mycat.ep</groupId>
             <artifactId>mycat-ep-icegrid-client</artifactId>

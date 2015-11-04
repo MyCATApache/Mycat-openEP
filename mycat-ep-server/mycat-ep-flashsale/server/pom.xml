@@ -13,6 +13,7 @@
         <version>${app.version}</version>
         <relativePath>../../mycat-ep-flashsale</relativePath>
     </parent>
+
     <build>
         <sourceDirectory>../src/main/java</sourceDirectory>
         <resources>

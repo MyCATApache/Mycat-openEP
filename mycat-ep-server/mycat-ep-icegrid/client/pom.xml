@@ -8,13 +8,54 @@
     <artifactId>mycat-ep-icegrid-client</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <parent>
-        <groupId>io.mycat.ep</groupId>
-        <artifactId>mycat-ep-icegrid</artifactId>
-        <version>1.0.0</version>
-        <relativePath>../../mycat-ep-icegrid</relativePath>
-    </parent>
-
+    <!--<parent>-->
+    <!--<groupId>io.mycat.ep</groupId>-->
+    <!--<artifactId>mycat-ep-icegrid</artifactId>-->
+    <!--<version>1.0.0</version>-->
+    <!--<relativePath>../../mycat-ep-icegrid</relativePath>-->
+    <!--</parent>-->
+    <properties>
+        <spring.version>4.1.7.RELEASE</spring.version>
+    </properties>
+    <repositories>
+        <repository>
+            <id>zeroc</id>
+            <name>repo zeroc ice</name>
+            <url>https://repo.zeroc.com/nexus/content/repositories/releases</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>ice</artifactId>
+            <version>3.6.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
     <build>
         <sourceDirectory>../src/main/java</sourceDirectory>
         <resources>
@@ -37,5 +78,5 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
