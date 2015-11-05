@@ -1,6 +1,7 @@
 package io.mycat.ep.web.controller;
 
 import io.mycat.ep.v1.user.ClientInfo;
+import io.mycat.ep.v1.user.UserHandlerPrx;
 import io.mycat.ep.v1.user.UserSession;
 import io.mycat.ep.v1.user.client.UserHandlerClient;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,12 @@ public class IndexController {
         clientInfo.signature="signature";
         clientInfo.password="123";
         clientInfo.phone="13800138"+(int)(Math.random()*1000);
-        UserSession session = UserHandlerClient.getServiceProxy().regist(clientInfo) ;
+
+        UserHandlerPrx userHandlerPrx = UserHandlerClient.getServiceProxy();
+
+        UserSession session = userHandlerPrx.regist(clientInfo) ;
+
+
         String token = session.token;
         String userid =String.valueOf(session.userId) ;
         String status = String.valueOf(session.status);

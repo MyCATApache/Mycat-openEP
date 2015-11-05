@@ -8,6 +8,7 @@
 
 第二步 使用 mycat-ep-icegrid-server 模块打出的包 上传到服务器解压目录 
  在解压的icegrid目录内执行 
+ 
     #chmod -R 777 logs
     #chmod +x bin/*
  
@@ -28,3 +29,45 @@
 
 好了，就这么简单服务就完成了 当然 各个服务模块还未调试 还有Bug 等着你修改 
 
+
+第三 客户端调用  
+
+    客户端也是非常容易的：
+    引用的包
+    
+            <!--IceClientUtil -->
+            <dependency>
+                <groupId>io.mycat.ep</groupId>
+                <artifactId>mycat-ep-icegrid-client</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <!-- 用户服务client 包 -->
+            <dependency>
+                    <groupId>io.mycat.ep</groupId>
+                    <artifactId>mycat-ep-user-client</artifactId>
+                    <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+     
+            其他服务模块类似 user client 引入
+     
+     Spring 加入下面配置：
+     
+            <context:property-placeholder location="classpath:iceclient.properties" file-encoding="UTF-8"/>
+            <context:component-scan base-package="io.mycat.ep" />
+     
+     iceclient.properties 配置文件的内容
+     
+            Ice.Default.Locator=MyIceGrid/Locator:default -h 192.168.0.221 -p 13000:default -h 192.168.0.221 -p 13001
+            Ice.idleTimeOutSeconds=300
+            
+     JAVA代码中像下面一样调用就OK了：
+            
+            
+        //得到 用户服务代理类            
+        UserHandlerPrx userHandlerPrx = UserHandlerClient.getServiceProxy();
+        //调用注册方法
+        UserSession session = userHandlerPrx.regist(clientInfo) ;
+
+
+
+End.

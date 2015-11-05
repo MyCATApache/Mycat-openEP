@@ -70,27 +70,27 @@
         <dependency>
             <groupId>io.mycat.ep</groupId>
             <artifactId>mycat-ep-user-client</artifactId>
-            <version>0.0.0.1-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.mycat.ep</groupId>
             <artifactId>mycat-ep-icegrid-client</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.mycat.ep</groupId>
             <artifactId>mycat-ep-flashsale-client</artifactId>
-            <version>0.0.0.1-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.mycat.ep</groupId>
             <artifactId>mycat-ep-goods-client</artifactId>
-            <version>0.0.0.1-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.mycat.ep</groupId>
             <artifactId>mycat-ep-order-client</artifactId>
-            <version>0.0.0.1-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
