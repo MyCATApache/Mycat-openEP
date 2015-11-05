@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.mycat.ep.receiver.dao.PurchaseReceiverDAO">
+	<resultMap id="purchase_receiver" type="io.mycat.ep.receiver.model.PurchaseReceiverMo">
+	  <id property="id" column="id" />
+	  <result property="userId" column="user_id"/>
+	  <result property="name" column="receiver_name"/>
+	  <result property="phone" column="receiver_phone"/>
+	  <result property="province" column="province"/>
+	  <result property="city" column="city"/>
+	  <result property="district" column="district"/>
+	  <result property="street" column="street"/>
+	  <result property="streetNumber" column="street_number"/>
+	  <result property="extraInfo" column="extra_info"/>
+	  <result property="defaultReceiver" column="default_receiver"/>
+	</resultMap>
+	<select id="findPurchaseReceiverListByUserId" parameterType="long" resultMap="purchase_receiver">
+		select user_id,receiver_phone,province,city,district,street,street_number,extra_info,default_receiver 
+		from purchase_receiver 
+		where user_id=#{userId}
+	</select>
+</mapper>

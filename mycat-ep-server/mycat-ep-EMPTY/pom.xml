@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<artifactId>mycat-ep-EMPTY</artifactId>
+	<description>mycat-ep server EMPTY
+空模块工程，将来需要建新模块工程时，直接复制这个工程即可创建</description>
+	<name>mycat-ep-EMPTY</name>
+	<version>${app.version}</version>
+	<url>http://mycat.io</url>
+
+	<parent>
+        <groupId>io.mycat.ep</groupId>
+        <artifactId>mycat-ep-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../mycat-ep-parent</relativePath>
+    </parent>
+    
+    <dependencies>
+        
+        <dependency>
+            <groupId>io.mycat.ep</groupId>
+            <artifactId>mycat-ep-common</artifactId>
+            <version>${app.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+</project>
