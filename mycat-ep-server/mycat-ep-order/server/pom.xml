@@ -6,33 +6,15 @@
 
     <groupId>io.mycat.ep</groupId>
     <artifactId>mycat-ep-order-server</artifactId>
-    <version>0.0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <parent>
         <groupId>io.mycat.ep</groupId>
         <artifactId>mycat-ep-order</artifactId>
-        <version>${app.version}</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../mycat-ep-order</relativePath>
     </parent>
-    <dependencies>
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-common</artifactId>
-            <version>${app.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-goods-server</artifactId>
-            <version>${app.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-icegrid-client</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-    </dependencies>
+
     <build>
         <sourceDirectory>../src/main/java</sourceDirectory>
         <resources>

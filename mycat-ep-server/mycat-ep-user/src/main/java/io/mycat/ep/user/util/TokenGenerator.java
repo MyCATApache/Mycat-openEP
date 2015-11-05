@@ -9,6 +9,8 @@ public class TokenGenerator {
 		return MyCatEPTokenUtil.generate(userId, phone, os, lastLoginTime);
 	}
 	public static void main(String[] args) {
-		System.out.println(Integer.toString(86400,36));
+
+		String token = TokenGenerator.generate(123,"13800138000",1,new Date());
+		System.out.println(token);
 	}
 }

@@ -19,6 +19,8 @@ import io.mycat.ep.constant.dao.MyCatEPConstantDAO;
 import me.jor.util.Help;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
 @Service
 public class MyCatEPConstant implements ApplicationContextAware{
 
@@ -42,6 +44,7 @@ public class MyCatEPConstant implements ApplicationContextAware{
 		this.myCatEPConstantDAO = myCatEPConstantDAO;
 	}
 
+	@PostConstruct
 	public void init(){
 		//常量参数作为配置中心的一部分，从命令行指定模块功能名，格式为：BUSINESS_GROUP/BUSINESS_LINE/APP/MODULE，以及配置中心的IP:PORT。可以根据这个名字从配置管理中心查到所有配置，将来可以扩展到DataSource、jedis的配置
 		//暂时先用数据库代替，将来要改成使用配置中心

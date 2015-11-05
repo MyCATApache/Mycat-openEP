@@ -6,13 +6,12 @@
 	<description>mycat-ep server EMPTY
 空模块工程，将来需要建新模块工程时，直接复制这个工程即可创建</description>
 	<name>mycat-ep-EMPTY</name>
-	<version>${app.version}</version>
 	<url>http://mycat.io</url>
 
 	<parent>
         <groupId>io.mycat.ep</groupId>
         <artifactId>mycat-ep-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../mycat-ep-parent</relativePath>
     </parent>
     
@@ -21,7 +20,7 @@
         <dependency>
             <groupId>io.mycat.ep</groupId>
             <artifactId>mycat-ep-common</artifactId>
-            <version>${app.version}</version>
+            <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

@@ -9,56 +9,10 @@
     <parent>
         <groupId>io.mycat.ep</groupId>
         <artifactId>mycat-ep-icegrid</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../mycat-ep-icegrid</relativePath>
     </parent>
-    <dependencies>
 
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-common</artifactId>
-            <version>${server.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-user-server</artifactId>
-            <version>${server.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-goods-server</artifactId>
-            <version>${server.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-order-server</artifactId>
-            <version>${server.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-flashsale-server</artifactId>
-            <version>${server.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-receiver-server</artifactId>
-            <version>${server.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-aop</artifactId>
-            <version>${server.version}</version>
-        </dependency>
-    </dependencies>
     <build>
         <plugins>
             <plugin>

@@ -1,0 +1,9 @@
+User
+<br/>
+
+token: ${token}
+<br/>
+userid:${userid}
+<br/>
+status:${status}
+
