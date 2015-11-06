@@ -31,6 +31,38 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <target name="slice2java">
+                                <taskdef name="slice2java" classname="Slice2JavaTask" classpathref="maven.plugin.classpath" />
+                                <slice2java outputdir="../src/main/java">
+                                    <fileset dir="../src/main/metadata" includes="*.ice" />
+                                    <includepath>
+                                        <pathelement path="../src/main/metadata" />
+                                    </includepath>
+                                </slice2java>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.zeroc</groupId>
+                        <artifactId>ant-ice</artifactId>
+                        <version>4.0.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
 
