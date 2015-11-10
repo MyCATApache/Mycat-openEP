@@ -5,28 +5,37 @@
 	<artifactId>mycat-ep-order</artifactId>
 	<description>mycat-ep server order</description>
 	<name>mycat-ep-order</name>
-	<version>${app.version}</version>
 	<url>http://mycat.io</url>
+    <packaging>pom</packaging>
 
 	<parent>
         <groupId>io.mycat.ep</groupId>
         <artifactId>mycat-ep-parent</artifactId>
-        <version>1.0.0</version>
-        <relativePath>../ep-parent</relativePath>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../mycat-ep-parent</relativePath>
     </parent>
-    
+
+    <modules>
+        <module>client</module>
+        <module>server</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>io.mycat.ep</groupId>
             <artifactId>mycat-ep-common</artifactId>
-            <version>${app.version}</version>
+            <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.mycat.ep</groupId>
-            <artifactId>mycat-ep-goods</artifactId>
-            <version>${app.version}</version>
+            <artifactId>mycat-ep-goods-server</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.mycat.ep</groupId>
+            <artifactId>mycat-ep-icegrid-client</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

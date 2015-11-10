@@ -14,15 +14,19 @@ import io.mycat.ep.v1.user.session._UserSessionHandlerDisp;
 import me.jor.common.GlobalObject;
 import me.jor.redis.JedisConnection;
 import me.jor.util.Help;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("userSessionHandlerImpl")
 public class UserSessionHandlerImpl extends _UserSessionHandlerDisp{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2877252048993741736L;
-
+	@Autowired
 	private JedisConnection redis;
+	@Autowired
 	private UserDAO userDAO;
 	
 	public JedisConnection getRedis() {

@@ -16,12 +16,12 @@ import io.mycat.ep.v1.goods.stock.StorageChangeResult;
 import io.mycat.ep.v1.goods.stock.StorageQuery;
 import io.mycat.ep.v1.goods.stock._GoodsStorageManageHandlerDisp;
 import me.jor.redis.JedisConnection;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GoodsStorageManageHandlerImpl extends _GoodsStorageManageHandlerDisp {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8217575993072033441L;
 	private static final String CHANGE_STORAGE_LUA;
 	static{
@@ -46,8 +46,9 @@ public class GoodsStorageManageHandlerImpl extends _GoodsStorageManageHandlerDis
 		baos.flush();
 		return baos.toString();
 	}
-	
+	@Autowired
 	private JedisConnection redis;
+	@Autowired
 	private GoodsDAO goodsDAO;
 	
 	public JedisConnection getRedis() {

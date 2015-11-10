@@ -1,0 +1,130 @@
+<icegrid>
+    <application name="Mycat_EP_System">
+        <properties id="MultiThreaded">
+            <property name="Ice.PrintStackTraces" value="1"/>
+            <!-- <property name="Ice.Default.PreferSecure" value="1"/> -->
+            <property name="IceSSL.Trace.Security" value="2"/>
+            <property name="Ice.ThreadPool.Client.Size" value="2"/>
+            <property name="Ice.ThreadPool.Client.SizeMax" value="50"/>
+            <property name="Ice.ThreadPool.Server.Size" value="10"/>
+            <property name="Ice.ThreadPool.Server.SizeMax" value="100"/>
+            <property name="IceBox.InheritProperties" value="1"/>
+            <property name="Ice.Override.ConnectTimeout" value="5000"/>
+            <property name="Ice.Override.Timeout" value="10000"/>
+            <property name="IceBox.Trace.ServiceObserver" value="1"/>
+            <property name="Ice.Default.LocatorCacheTimeout" value="300"/>
+            <property name="Ice.BackgroundLocatorCacheUpdates" value="1"/>
+        </properties>
+        <server-template id="IcePatch2">
+
+            <parameter name="instance-name" default="${application}.IcePatch2"/>
+            <parameter name="endpoints" default="default"/>
+            <parameter name="directory"/>
+
+            <server id="${instance-name}" exe="icepatch2server" application-distrib="false" activation="on-demand">
+
+                <adapter name="IcePatch2" endpoints="${endpoints}">
+                    <object identity="${instance-name}/server" type="::IcePatch2::FileServer"/>
+                </adapter>
+
+                <properties>
+                    <property name="IcePatch2.InstanceName" value="${instance-name}"/>
+                    <property name="IcePatch2.Directory" value="${directory}"/>
+                </properties>
+            </server>
+
+        </server-template>
+
+
+        <server-template id="Myat_EP_ServerTemplate">
+            <parameter name="id"/>
+            <icebox id="Mycat_EP_Server${id}" exe="java" activation="on-demand">
+                <properties>
+                    <properties refid="MultiThreaded"/>
+                </properties>
+                <option>-Xmx512M</option>
+                <option>-Duser.timezone=Asia/Shanghai</option>
+                <option>-DAppId=Mycat_EP_Server${id}</option>
+                <!--<option>io.mycat.ep.ice.server.Sl4jIceBoxServer</option>-->
+                <option>IceBox.Server</option>
+                <env>CLASSPATH=${server.distrib}/mycat_ep_system/:${server.distrib}/mycat_ep_system/libs/*:${server.distrib}/mycat_ep_system/config/:$CLASSPATH:.</env>
+                <service name="UserHandler" entry="io.mycat.ep.v1.user.impl.UserServiceImpl">
+                    <adapter name="UserHandler" id="UserHandler${id}" endpoints="default"
+                             replica-group="UserHandlerRep">
+                    </adapter>
+                </service>
+                <service name="UserSessionHandler" entry="io.mycat.ep.v1.user.session.impl.UserSessionServiceImpl">
+                    <adapter name="UserSessionHandler" id="UserSessionHandler${id}" endpoints="default"
+                             replica-group="UserSessionHandlerRep">
+                    </adapter>
+                </service>
+                <service name="GoodsHandler" entry="io.mycat.ep.v1.goods.impl.GoodsHandlerServiceImpl">
+                    <adapter name="GoodsHandler" id="GoodsHandler${id}" endpoints="default" replica-group="GoodsHandlerRep"/>
+                </service>
+                <service name="GoodsStorageManageHandler" entry="io.mycat.ep.v1.goods.stock.impl.GoodsStorageManageServiceImpl">
+                    <adapter name="GoodsStorageManageHandler" id="GoodsStorageManageHandler${id}" endpoints="default"
+                             replica-group="GoodsStorageManageHandlerRep">
+                    </adapter>
+                </service>
+                <service name="OrderHandler" entry="io.mycat.ep.v1.order.impl.OrderServiceImpl">
+                    <adapter name="OrderHandler" id="OrderHandler${id}" endpoints="default"
+                             replica-group="OrderHandlerRep">
+                    </adapter>
+                </service>
+                <service name="FlashBuyHandler" entry="io.mycat.ep.v1.flashsale.impl.FlashSaleServiceImpl">
+                    <adapter name="FlashBuyHandler" id="FlashBuyHandler${id}" endpoints="default"
+                             replica-group="FlashBuyHandlerRep">
+                    </adapter>
+                </service>
+                <service name="PurchaseReceiverHandler" entry="io.mycat.ep.v1.receiver.impl.PurchaseReceiverServiceImpl">
+                    <adapter name="PurchaseReceiverHandler" id="PurchaseReceiverHandler${id}" endpoints="default"
+                             replica-group="PurchaseReceiverHandlerRep">
+                    </adapter>
+                </service>
+
+                <distrib>
+                    <directory>mycat_ep_system</directory>
+                </distrib>
+                <property name="IceMX.Metrics.Debug.GroupBy" value="id"/>
+                <property name="IceMX.Metrics.Debug.Disabled" value="1"/>
+                <property name="IceMX.Metrics.ByParent.GroupBy" value="parent"/>
+                <property name="IceMX.Metrics.ByParent.Disabled" value="1"/>
+            </icebox>
+        </server-template>
+
+        <replica-group id="UserHandlerRep">
+            <load-balancing type="round-robin" n-replicas="0"/>
+            <object identity="UserHandler" type="::mycatep::UserHandler"/>
+        </replica-group>
+        <replica-group id="UserSessionHandlerRep">
+            <load-balancing type="round-robin" n-replicas="0"/>
+            <object identity="UserSessionHandler" type="::mycatep::UserSessionHandler"/>
+        </replica-group>
+        <replica-group id="GoodsHandlerRep">
+            <load-balancing type="round-robin" n-replicas="0"/>
+            <object identity="GoodsHandler" type="::mycatep::GoodsHandler"/>
+        </replica-group>
+        <replica-group id="GoodsStorageManageHandlerRep">
+            <load-balancing type="round-robin" n-replicas="0"/>
+            <object identity="GoodsStorageManageHandler" type="::mycatep::GoodsStorageManageHandler"/>
+        </replica-group>
+        <replica-group id="OrderHandlerRep">
+            <load-balancing type="round-robin" n-replicas="0"/>
+            <object identity="OrderHandler" type="::mycatep::OrderHandler"/>
+        </replica-group>
+        <replica-group id="FlashBuyHandlerRep">
+            <load-balancing type="round-robin" n-replicas="0"/>
+            <object identity="FlashBuyHandler" type="::mycatep::FlashBuyHandler"/>
+        </replica-group>
+        <replica-group id="PurchaseReceiverHandlerRep">
+            <load-balancing type="round-robin" n-replicas="0"/>
+            <object identity="PurchaseReceiverHandler" type="::mycatep::PurchaseReceiverHandler"/>
+        </replica-group>
+
+        <node name="node1">
+            <server-instance template="Myat_EP_ServerTemplate" id="1"/>
+            <server-instance template="Myat_EP_ServerTemplate" id="2"/>
+            <server-instance template="IcePatch2" directory="./patch"/>
+        </node>
+    </application>
+</icegrid>

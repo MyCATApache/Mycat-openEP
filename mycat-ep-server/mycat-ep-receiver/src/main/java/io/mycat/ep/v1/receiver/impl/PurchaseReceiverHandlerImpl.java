@@ -17,15 +17,17 @@ import io.mycat.ep.v1.receiver._PurchaseReceiverHandlerDisp;
 import me.jor.common.GlobalObject;
 import me.jor.redis.JedisConnection;
 import me.jor.util.Help;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("purchaseReceiverHandlerImpl")
 public class PurchaseReceiverHandlerImpl extends _PurchaseReceiverHandlerDisp{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5322863495952389206L;
 
+	private static final long serialVersionUID = 5322863495952389206L;
+	@Autowired
 	private JedisConnection redis;
+	@Autowired
 	private PurchaseReceiverDAO purchaseReceiverDAO;
 	
 	@Override

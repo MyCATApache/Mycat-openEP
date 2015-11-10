@@ -26,16 +26,20 @@ import me.jor.common.GlobalObject;
 import me.jor.redis.JedisConnection;
 import me.jor.util.Help;
 import me.jor.util.MessageDigestUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserHandlerImpl extends _UserHandlerDisp{
-
-	/**
-	 * 
-	 */
+	private final static Logger logger = LoggerFactory.getLogger(UserHandlerImpl.class);
 	private static final long serialVersionUID = 2825731175957204308L;
-	
+	@Autowired
 	private JedisConnection redis;
+	@Autowired
 	private SMSSender smsSender;
+	@Autowired
 	private UserDAO userDAO;
 	
 
@@ -72,7 +76,7 @@ public class UserHandlerImpl extends _UserHandlerDisp{
 		Long id=userDAO.findIdByPhone(phone);
 		if(id==null){
 			userDAO.saveUser(user);
-			return login(info);
+			return login(info,__current);
 		}else{
 			return new UserSessionVo(UserAccessStatus.REGISTED);
 		}
@@ -99,7 +103,11 @@ public class UserHandlerImpl extends _UserHandlerDisp{
 	public UserSession login(ClientInfo info, Current __current) {
 		String phone=info.phone;
 		String password=MessageDigestUtil.md5Base64(phone+info.password, CommonConstant.DEFAULT_CHARSET);
+		logger.info("password:"+password);
+
 		Long id=userDAO.findIdByPhoneAndPassword(phone,password);
+		logger.info("userId:"+id);
+
 		if(id==null){
 			return new UserSessionVo(UserAccessStatus.UNREGISTED_OR_INCORRECT_PASSWORD);
 		}else{
@@ -110,10 +118,18 @@ public class UserHandlerImpl extends _UserHandlerDisp{
 			String token=TokenGenerator.generate(id, phone, info.os, lastLoginTime);
 			session.setToken(token);
 			try {
-				redis.setex(UserRedisKeyGenerator.generateUserSessionKey(redis, phone),UserConstant.getUserSessionLife(),
-						GlobalObject.getJsonMapper().writeValueAsString(session));
+
+				try {
+					redis.setex(UserRedisKeyGenerator.generateUserSessionKey(redis, phone),UserConstant.getUserSessionLife(),
+                            GlobalObject.getJsonMapper().writeValueAsString(session));
+				} catch (Exception e) {
+					logger.error(e.getMessage(),e);
+				}
+
 				userDAO.saveLoginSession(session);
-			} catch (JsonProcessingException e) {}
+			} catch (Exception e) {
+				logger.error(e.getMessage(),e);
+			}
 			return new UserSession(1,token,id);
 		}
 	}

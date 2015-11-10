@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.mycat.ep</groupId>
+    <artifactId>mycat-ep-flashsale-server</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <parent>
+        <groupId>io.mycat.ep</groupId>
+        <artifactId>mycat-ep-flashsale</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../mycat-ep-flashsale</relativePath>
+    </parent>
+
+    <build>
+        <sourceDirectory>../src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>../src/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <target name="slice2java">
+                                <taskdef name="slice2java" classname="Slice2JavaTask" classpathref="maven.plugin.classpath" />
+                                <slice2java outputdir="../src/main/java">
+                                    <fileset dir="../src/main/metadata" includes="*.ice" />
+                                    <includepath>
+                                        <pathelement path="../src/main/metadata" />
+                                    </includepath>
+                                </slice2java>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.zeroc</groupId>
+                        <artifactId>ant-ice</artifactId>
+                        <version>4.0.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

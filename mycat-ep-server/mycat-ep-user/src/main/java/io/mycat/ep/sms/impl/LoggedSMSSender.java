@@ -6,7 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.mycat.ep.sms.SMSSender;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LoggedSMSSender implements SMSSender{
 
 	private Logger log=LoggerFactory.getLogger(LoggedSMSSender.class);

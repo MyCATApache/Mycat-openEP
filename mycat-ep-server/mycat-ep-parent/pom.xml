@@ -13,25 +13,19 @@
 		<version.template.file>version.txt.template</version.template.file>
 		<version.file>version.txt</version.file>
         <maven.build.timestamp.format>yyyy-MM-dd.HH:mm:ss</maven.build.timestamp.format>
-        <spring.version>4.1.7.RELEASE</spring.version>
-        <sprint.boot.version>1.2.6.RELEASE</sprint.boot.version>
-        <app.version>0.0.0.1-SNAPSHOT</app.version>
-		<parent.path>D:\docs\work\eclipse-luna\mycat\Mycat-openEP\mycat-ep-server\mycat-ep-parent</parent.path><!-- 这里改成相对路径就不好使了，谁知道怎么改的 -->
-		<lib.path>D:\docs\work\eclipse-luna\mycat\Mycat-openEP\mycat-ep-server\mycat-ep-lib</lib.path><!-- 这里改成相对路径就不好使了，谁知道怎么改的 -->
+        <spring.version>4.2.1.RELEASE</spring.version>
+        <!--<app.version>0.0.0.1-SNAPSHOT</app.version>-->
+		<parent.path>${basedir}/../mycat-ep-parent</parent.path>
+		<lib.path>${pom.basedir}/../mycat-ep-lib</lib.path>
 		<app.dir>./build</app.dir>
-		<start-class>io.mycat.ep.Bootstrap</start-class>
+        <ice.include.path>../src/main/metadata</ice.include.path>
+		<!--<start-class>io.mycat.ep.Bootstrap</start-class>-->
     </properties>
     
-    
-    <parent>
-       <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.6.RELEASE</version>
- 	</parent>
-    
+
     <groupId>io.mycat.ep</groupId>
     <artifactId>mycat-ep-parent</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>mycat-ep-parent</name>
     <description>mycat-ep server parent</description>
@@ -49,6 +43,11 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </repository>
+        <repository>
+            <id>zeroc</id>
+            <name>repo zeroc ice</name>
+            <url>https://repo.zeroc.com/nexus/content/repositories/releases</url>
         </repository>
 	</repositories>
 	<distributionManagement>
@@ -68,36 +67,20 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <!-- 
-        <dependency>
-            <groupId>org.csource.fastdfs</groupId>
-            <artifactId>fastdfs-client</artifactId>
-            <version>201503301232</version>
-            <scope>compile</scope>
-        </dependency>
-        -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-autoconfigure</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-remote-shell</artifactId>
-		</dependency>
+
+
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
             <version>${spring.version}</version>
             <scope>compile</scope>
         </dependency>
-		<!--
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-			<version>${sprint.boot.version}</version>
-		</dependency>
+
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -110,7 +93,7 @@
             <version>${spring.version}</version>
             <scope>compile</scope>
         </dependency>
-        
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
@@ -137,21 +120,18 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
             <scope>compile</scope>
         </dependency>
-        -->
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>2.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.3</version>
-		</dependency>
+
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -159,9 +139,10 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.3</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.12</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -262,7 +243,6 @@
             <version>1.2</version>
             <scope>compile</scope>
         </dependency>
-
 		<dependency>
 			<groupId>com.lmax</groupId>
 			<artifactId>disruptor</artifactId>
@@ -275,28 +255,30 @@
             <version>2.4.0</version>
             <scope>compile</scope>
         </dependency>
-        
-        <dependency>
-		    <groupId>me.jor</groupId>
-		    <artifactId>meJOR</artifactId>
-		    <version>201509211701</version>
-		    <scope>system</scope>
-			<systemPath>${lib.path}\meJOR-201509211701.jar</systemPath>
-		</dependency>
 		<dependency>
 		    <groupId>com.zeroc</groupId>
 		    <artifactId>ice</artifactId>
-		    <version>3.6.0</version>
-		    <scope>system</scope>
-			<systemPath>${lib.path}\ice-3.6.0.jar</systemPath>
+		    <version>3.6.1</version>
+		    <scope>compile</scope>
 		</dependency>
 		<dependency>
 		    <groupId>com.zeroc</groupId>
 		    <artifactId>icebox</artifactId>
-		    <version>3.6.0</version>
-		    <scope>system</scope>
-			<systemPath>${lib.path}\icebox-3.6.0.jar</systemPath>
+		    <version>3.6.1</version>
+		    <scope>compile</scope>
 		</dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>icegrid</artifactId>
+            <version>3.6.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>icestorm</artifactId>
+            <version>3.6.1</version>
+            <scope>compile</scope>
+        </dependency>
 		<dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
@@ -327,19 +309,61 @@
 			<artifactId>groovy-all</artifactId>
 			<version>2.4.4</version>
 		</dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.14</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.34</version>
+        </dependency>
+
     </dependencies>
-    
+    <modules>
+        <module>../mycat-ep-common</module>
+        <module>../mycat-ep-user</module>
+        <module>../mycat-ep-goods</module>
+        <module>../mycat-ep-order</module>
+        <module>../mycat-ep-flashsale</module>
+        <module>../mycat-ep-receiver</module>
+        <module>../mycat-ep-aop</module>
+        <module>../mycat-ep-icegrid</module>
+
+    </modules>
     <build>
-        <sourceDirectory>src/main/java</sourceDirectory>  
-        <resources>  
-            <resource>  
-                <directory>src/main/resources</directory>  
-            </resource>  
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+
         </resources>
         <plugins>
-        	<plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.2</version>
+                <!--<reportSets>-->
+                    <!--<reportSet>-->
+                        <!--<reports>-->
+                            <!--<report>dependency-updates-report</report>-->
+                            <!--<report>plugin-updates-report</report>-->
+                            <!--<report>property-updates-report</report>-->
+                        <!--</reports>-->
+                    <!--</reportSet>-->
+                <!--</reportSets>-->
             </plugin>
         </plugins>
     </build>
@@ -351,6 +375,11 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+                <id>zeroc</id>
+                <name>repo zeroc ice</name>
+                <url>https://repo.zeroc.com/nexus/content/repositories/releases</url>
         </pluginRepository>
     </pluginRepositories>
 </project>

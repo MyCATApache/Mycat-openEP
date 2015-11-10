@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+       <!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
+       <context:component-scan base-package="io.mycat.ep.web.controller" />
+
+       <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 p:prefix中模板放置路径 -->
+       <bean id="velocityConfig"
+             class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+              <property name="resourceLoaderPath" value="/WEB-INF/view/" />
+              <property name="velocityProperties">
+                     <props>
+                            <prop  key="input.encoding">UTF-8</prop>
+                            <prop  key="output.encoding">UTF-8</prop>
+                     </props>
+              </property>
+       </bean>
+
+       <bean id="viewResolver"
+             class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+              <property name="cache" value="true" />
+              <property name="prefix" value="" />
+              <property name="layoutUrl" value="layout.vm" />
+              <property name="suffix" value=".vm" />
+              <property name="contentType"><value>text/html;charset=UTF-8</value></property>
+       </bean>
+
+
+
+</beans>
