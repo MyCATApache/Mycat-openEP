@@ -42,6 +42,16 @@
 ```bash
 gunzip -c openep_1.3.tgz | docker import - openep:1.3
 ```
+openep_1.3 镜像包括ICEGRID 部署的各服务模块
+
+windows ，mac 环境访问docker 内部网络，需要添加到 docker 私有网络的路由
+例如：以 docker私有网络 172.17.0.0/24  ， VM 虚拟机IP 192.168.99.100 为例：
+MAC 平台：
+route -n add -net 172.17.0.0/24 192.168.99.100
+windows 平台
+route add 172.17.0.0 mask 255.255.255.0 192.168.99.100
+
+
 
 # 构建镜像
 
