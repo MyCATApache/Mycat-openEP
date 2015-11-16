@@ -2,7 +2,7 @@
 #服务接口列表
 
 |模块     |服务代理类    |方法 |说明   |是否验证|
-----      ----      ----     ----    ----
+| ----    | -----       |----|----  |----    |
 |user     |UserHandlerPrx | UserSession regist(ClientInfo info)| 注册|是|
 |user     |UserHandlerPrx | UserCommonResult sendSMSCode(string phone)| 发送验证码|否|
 |user     |UserHandlerPrx |UserCommonResult changePassword(long userId, string smsCode,string newPassword)| 修改密码|否|
