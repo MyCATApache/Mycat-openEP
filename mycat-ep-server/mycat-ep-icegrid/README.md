@@ -73,7 +73,7 @@ JAVA代码调用方式：
      
  
     //得到 用户服务代理类            
-    UserHandlerPrx userHandlerPrx = (UserHandlerPrx) ICEClientUtil.getSerivcePrx(UserHandlerPrx.class,null);;
+    UserHandlerPrx userHandlerPrx = (UserHandlerPrx) ICEClientUtil.getSerivcePrx(UserHandlerPrx.class);
     //调用注册方法
     UserSession session = userHandlerPrx.regist(clientInfo) ;
  

@@ -12,7 +12,7 @@
 
 # 第三方docker资料
 
-### [docker安装包快速下载](http://pan.baidu.com/s/1dDew2m1)
+### [docker安装包快速下载](http://pan.baidu.com/s/1c0jZvH2)
 
 [docker入门指南][1]
 
@@ -22,24 +22,25 @@
 
 # Docker环境准备
 
-可以用Boot2Docker在Windows上安装，或者导入已经安装好整个平台的Redhat Atomict 虚机镜像
-虚机镜像的下载地址为百度盘：http://pan.baidu.com/s/1qWE8KFi
-虚机的用户名密码 root/mycat1314
-虚机网络，eth0为NAT网络，eth1为一个Host-Only的子网，子网网段为172.16.0.0/16 ，其中IP地址固定为172.16.88.8 ，需要自己配置VirtualBox或VM的网络并绑定到虚机的eth1网卡上。
-运行 docker ps -a 查询mycat ep的镜像
-docker start xxxxcontainID 启动镜像
 
-浏览器访问 http://172.16.88.8:9001  用户名密码root/123456
+~~可以用Boot2Docker在Windows上安装，或者导入已经安装好整个平台的Redhat Atomict 虚机镜像~~
+~~虚机镜像的下载地址为百度盘：http://pan.baidu.com/s/1qWE8KFi~~
+~~虚机的用户名密码 root/mycat1314~~
+~~虚机网络，eth0为NAT网络，eth1为一个Host-Only的子网，子网网段为172.16.0.0/16 ，其中IP地址固定为172.16.88.8 ，需要自己配置VirtualBox或VM的网络并绑定到虚机的eth1网卡上。~~
+~~运行 docker ps -a 查询mycat ep的镜像~~
+~~docker start xxxxcontainID 启动镜像~~
 
+~~浏览器访问 http://172.16.88.8:9001  用户名密码root/123456~~
+ 
 
 
 # 直接导入镜像
 
-因为国内访问dockerhub很慢, 已将镜像导入上传, [点击去下载](http://pan.baidu.com/s/1dDew2m1)
+因为国内访问dockerhub很慢, 已将镜像导入上传, [点击去下载](http://pan.baidu.com/s/1c0jZvH2)
 
 导入:
 ```bash
-gunzip -c openep-1.2.tgz | docker import - openep
+gunzip -c openep_1.3.tgz | docker import - openep:1.3
 ```
 
 # 构建镜像
@@ -101,7 +102,7 @@ bridge方式启动(docker私有网络, 默认)
 | tomcat       | 8080       | servlet容器                            |
 | probe        |            | tomcat管理工具: http://host:port/probe |
 | zookeeper    | 2181       | 集群工具                               |
-| ice          | 4061 8888  | rpc中间件                              |
+| ice          | 12000 12001| rpc中间件                              |
 
 # 提高构建速度
 
