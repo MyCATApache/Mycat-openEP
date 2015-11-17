@@ -9,5 +9,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<!-- The MVC Java config and the MVC namespace both provide options for enabling the use of matrix variables. -->
     <mvc:annotation-driven enable-matrix-variables="true"/>
-
+       <!-- 引入配置文件 -->
+       <context:property-placeholder location="classpath:iceclient.properties" file-encoding="UTF-8"/>
+       <context:component-scan base-package="io.mycat.ep" />
 </beans>
