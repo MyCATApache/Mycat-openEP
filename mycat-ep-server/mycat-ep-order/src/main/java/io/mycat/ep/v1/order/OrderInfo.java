@@ -257,5 +257,5 @@ public class OrderInfo implements java.lang.Cloneable, java.io.Serializable
     
     private static final OrderInfo __nullMarshalValue = new OrderInfo();
 
-    public static final long serialVersionUID = 420302324L;
+    public static final long serialVersionUID = -7741533956250710540L;
 }
