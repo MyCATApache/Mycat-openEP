@@ -1,5 +1,6 @@
 package io.mycat.ep.web.controller;
 
+import io.mycat.ep.ice.utils.ICEClientUtil;
 import io.mycat.ep.v1.user.ClientInfo;
 import io.mycat.ep.v1.user.UserHandlerPrx;
 import io.mycat.ep.v1.user.UserSession;
@@ -29,7 +30,8 @@ public class IndexController {
         clientInfo.password="123";
         clientInfo.phone="13800138"+(int)(Math.random()*1000);
 
-        UserHandlerPrx userHandlerPrx = UserHandlerClient.getServiceProxy();
+        //UserHandlerPrx userHandlerPrx = UserHandlerClient.getServiceProxy();
+        UserHandlerPrx userHandlerPrx = (UserHandlerPrx) ICEClientUtil.getSerivcePrx(UserHandlerPrx.class);
 
         UserSession session = userHandlerPrx.regist(clientInfo) ;
 
