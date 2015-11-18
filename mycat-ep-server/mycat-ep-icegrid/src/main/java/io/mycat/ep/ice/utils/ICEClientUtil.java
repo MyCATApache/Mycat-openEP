@@ -127,6 +127,11 @@ public class ICEClientUtil {
 		}
 	}
 
+
+	public static ObjectPrx getSerivcePrx(Class serviceCls){
+		return getSerivcePrx(serviceCls,null);
+	}
+
 	/**
 	 * 用于客户端API获取ICE服务实例的场景
 	 *

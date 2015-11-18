@@ -65,19 +65,17 @@ Spring 加入下面配置：
      
 iceclient.properties 配置文件的内容
         
-  ```       
+      
         Ice.Default.Locator=MyIceGrid/Locator:default -h 192.168.0.221 -p 13000:default -h 192.168.0.221 -p 13001
         Ice.idleTimeOutSeconds=300
-  ```
-      
-JAVA代码中像下面一样调用就OK了：
+ 
+JAVA代码调用方式：
      
- ```
+ 
     //得到 用户服务代理类            
-    UserHandlerPrx userHandlerPrx = UserHandlerClient.getServiceProxy();
+    UserHandlerPrx userHandlerPrx = (UserHandlerPrx) ICEClientUtil.getSerivcePrx(UserHandlerPrx.class);
     //调用注册方法
     UserSession session = userHandlerPrx.regist(clientInfo) ;
- ```
  
  
 End.
