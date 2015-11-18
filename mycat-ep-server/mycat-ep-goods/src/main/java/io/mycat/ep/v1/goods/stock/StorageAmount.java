@@ -131,5 +131,5 @@ public class StorageAmount implements java.lang.Cloneable, java.io.Serializable
     
     private static final StorageAmount __nullMarshalValue = new StorageAmount();
 
-    public static final long serialVersionUID = 1166408214L;
+    public static final long serialVersionUID = 8204034959896607254L;
 }

@@ -155,5 +155,5 @@ public class StorageChange implements java.lang.Cloneable, java.io.Serializable
     
     private static final StorageChange __nullMarshalValue = new StorageChange();
 
-    public static final long serialVersionUID = -2060091278L;
+    public static final long serialVersionUID = -5500149724206497678L;
 }
