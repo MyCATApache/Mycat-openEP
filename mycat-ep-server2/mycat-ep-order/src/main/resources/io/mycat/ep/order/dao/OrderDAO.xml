@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.mycat.ep.order.dao.OrderDAO">
+	<insert id="saveOrder" parameterType="io.mycat.ep.order.model.PurchaseOrder" useGeneratedKeys="true" keyProperty="id">
+		insert into purchase_order(
+		user_id,address,receiver_name,receiver_phone,order_code,order_status
+		)values(
+		#{userId},#{address},#{receiverName},#{receiverPhone},#{receiverPhone},#{orderCode},#{orderStatus}
+		)
+	</insert>
+	<insert id="saveOrderedGoods" parameterType="io.mycat.ep.order.model.PurchaseOrderGoods">
+		insert into purchase_order_goods(
+		user_id,order_id,goods_id,amount,unit_price
+		)values(
+		#{userId},#{orderId},#{goodsId},#{amount},#{price}
+		)
+	</insert>
+</mapper>
