@@ -146,5 +146,5 @@ public class UserSession implements java.lang.Cloneable, java.io.Serializable
     
     private static final UserSession __nullMarshalValue = new UserSession();
 
-    public static final long serialVersionUID = -1120188927L;
+    public static final long serialVersionUID = -4451012250781923839L;
 }

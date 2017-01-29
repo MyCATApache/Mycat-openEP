@@ -25,5 +25,5 @@ public interface FlashBuyHandler extends Ice.Object,
 {
     public static final String ice_staticId = "::flashsale::FlashBuyHandler";
 
-    public static final long serialVersionUID = 1335255344L;
+    public static final long serialVersionUID = -7202427577282698960L;
 }

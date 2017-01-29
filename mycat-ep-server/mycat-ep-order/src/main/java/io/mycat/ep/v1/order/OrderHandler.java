@@ -25,5 +25,5 @@ public interface OrderHandler extends Ice.Object,
 {
     public static final String ice_staticId = "::order::OrderHandler";
 
-    public static final long serialVersionUID = -1556065275L;
+    public static final long serialVersionUID = -8865908735067794427L;
 }

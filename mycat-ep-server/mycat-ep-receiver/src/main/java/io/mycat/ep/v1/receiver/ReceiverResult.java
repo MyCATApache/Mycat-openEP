@@ -131,5 +131,5 @@ public class ReceiverResult implements java.lang.Cloneable, java.io.Serializable
     
     private static final ReceiverResult __nullMarshalValue = new ReceiverResult();
 
-    public static final long serialVersionUID = 408223068L;
+    public static final long serialVersionUID = -5884709200657580708L;
 }

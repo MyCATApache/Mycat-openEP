@@ -166,5 +166,5 @@ public class FlashSaleResult implements java.lang.Cloneable, java.io.Serializabl
     
     private static final FlashSaleResult __nullMarshalValue = new FlashSaleResult();
 
-    public static final long serialVersionUID = 548950615L;
+    public static final long serialVersionUID = 778674513297035863L;
 }

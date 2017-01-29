@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -68,7 +68,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:jconsole:1.8.0">
         <CLASSES>
-          <root url="jar://C:/Program Files/Java/jdk1.8.0_45/lib/jconsole.jar!/" />
+          <root url="jar:///usr/share/jdk1.8.0_40/lib/jconsole.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -77,21 +77,21 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:tools:1.8.0">
         <CLASSES>
-          <root url="jar://C:/Program Files/Java/jdk1.8.0_45/lib/tools.jar!/" />
+          <root url="jar:///usr/share/jdk1.8.0_40/lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.34" level="project" />
-    <orderEntry type="module" module-name="UserServer" />
-    <orderEntry type="module" module-name="icegrid-client" />
+    <orderEntry type="module" module-name="mycat-ep-user-server" />
+    <orderEntry type="module" module-name="mycat-ep-icegrid-client" />
     <orderEntry type="module" module-name="mycat-ep-goods-server" />
-    <orderEntry type="module" module-name="server" />
+    <orderEntry type="module" module-name="mycat-ep-order-server" />
     <orderEntry type="module" module-name="mycat-ep-flashsale-server" />
     <orderEntry type="module" module-name="mycat-ep-receiver-server" />
     <orderEntry type="module" module-name="mycat-ep-aop" />
-    <orderEntry type="module" module-name="userClient" />
+    <orderEntry type="module" module-name="mycat-ep-user-client" />
     <orderEntry type="library" name="Maven: com.zeroc:ice:3.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.zeroc:icebox:3.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.zeroc:icegrid:3.6.1" level="project" />

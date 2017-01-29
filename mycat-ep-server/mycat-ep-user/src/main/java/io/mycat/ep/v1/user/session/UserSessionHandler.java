@@ -25,5 +25,5 @@ public interface UserSessionHandler extends Ice.Object,
 {
     public static final String ice_staticId = "::user::session::UserSessionHandler";
 
-    public static final long serialVersionUID = -2004913787L;
+    public static final long serialVersionUID = -2833638747516472955L;
 }

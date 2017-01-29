@@ -145,5 +145,5 @@ public class GoodsPriceQuery implements java.lang.Cloneable, java.io.Serializabl
     
     private static final GoodsPriceQuery __nullMarshalValue = new GoodsPriceQuery();
 
-    public static final long serialVersionUID = 1722082946L;
+    public static final long serialVersionUID = 7447279680155346562L;
 }

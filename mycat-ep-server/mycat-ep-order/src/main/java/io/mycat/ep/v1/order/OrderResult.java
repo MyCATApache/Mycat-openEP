@@ -145,5 +145,5 @@ public class OrderResult implements java.lang.Cloneable, java.io.Serializable
     
     private static final OrderResult __nullMarshalValue = new OrderResult();
 
-    public static final long serialVersionUID = -625066863L;
+    public static final long serialVersionUID = -5306075526648152943L;
 }
