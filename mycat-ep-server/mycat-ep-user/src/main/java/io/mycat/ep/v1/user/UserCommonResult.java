@@ -20,9 +20,6 @@
 
 package io.mycat.ep.v1.user;
 
-import IceInternal.BasicStream;
-import IceInternal.HashUtil;
-
 public class UserCommonResult implements java.lang.Cloneable, java.io.Serializable
 {
     public int status;
@@ -66,8 +63,8 @@ public class UserCommonResult implements java.lang.Cloneable, java.io.Serializab
     hashCode()
     {
         int __h = 5381;
-        __h = HashUtil.hashAdd(__h, "::user::UserCommonResult");
-        __h = HashUtil.hashAdd(__h, status);
+        __h = IceInternal.HashUtil.hashAdd(__h, "::user::UserCommonResult");
+        __h = IceInternal.HashUtil.hashAdd(__h, status);
         return __h;
     }
 
@@ -87,19 +84,19 @@ public class UserCommonResult implements java.lang.Cloneable, java.io.Serializab
     }
 
     public void
-    __write(BasicStream __os)
+    __write(IceInternal.BasicStream __os)
     {
         __os.writeInt(status);
     }
 
     public void
-    __read(BasicStream __is)
+    __read(IceInternal.BasicStream __is)
     {
         status = __is.readInt();
     }
 
     static public void
-    __write(BasicStream __os, UserCommonResult __v)
+    __write(IceInternal.BasicStream __os, UserCommonResult __v)
     {
         if(__v == null)
         {
@@ -112,7 +109,7 @@ public class UserCommonResult implements java.lang.Cloneable, java.io.Serializab
     }
 
     static public UserCommonResult
-    __read(BasicStream __is, UserCommonResult __v)
+    __read(IceInternal.BasicStream __is, UserCommonResult __v)
     {
         if(__v == null)
         {
@@ -124,5 +121,5 @@ public class UserCommonResult implements java.lang.Cloneable, java.io.Serializab
     
     private static final UserCommonResult __nullMarshalValue = new UserCommonResult();
 
-    public static final long serialVersionUID = -567530788L;
+    public static final long serialVersionUID = 5569590422108121820L;
 }

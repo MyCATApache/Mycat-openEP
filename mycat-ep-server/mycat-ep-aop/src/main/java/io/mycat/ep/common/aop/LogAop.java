@@ -14,7 +14,7 @@ public class LogAop {
 	private Map<String,Object> populateLog(ProceedingJoinPoint point,Object result){
 		Map<String,Object> logMap=new HashMap<>();
 		Object[] args=point.getArgs();
-		if(args!=null && args.length>1){
+		if(args!=null && args.length>0){
 			logMap.put("params", args[0]);
 		}
 		if(result!=null){

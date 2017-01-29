@@ -131,5 +131,5 @@ public class GoodsPriceQueryResult implements java.lang.Cloneable, java.io.Seria
     
     private static final GoodsPriceQueryResult __nullMarshalValue = new GoodsPriceQueryResult();
 
-    public static final long serialVersionUID = -336687028L;
+    public static final long serialVersionUID = -3831690730558025652L;
 }

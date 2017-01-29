@@ -25,5 +25,5 @@ public interface GoodsStorageManageHandler extends Ice.Object,
 {
     public static final String ice_staticId = "::goods::stock::GoodsStorageManageHandler";
 
-    public static final long serialVersionUID = 1191556957L;
+    public static final long serialVersionUID = 5431870656843462493L;
 }

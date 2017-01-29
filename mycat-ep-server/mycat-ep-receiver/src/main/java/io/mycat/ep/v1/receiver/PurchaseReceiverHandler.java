@@ -25,5 +25,5 @@ public interface PurchaseReceiverHandler extends Ice.Object,
 {
     public static final String ice_staticId = "::receiver::PurchaseReceiverHandler";
 
-    public static final long serialVersionUID = -1806784082L;
+    public static final long serialVersionUID = -7301768344325150290L;
 }

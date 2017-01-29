@@ -135,5 +135,5 @@ public class GoodsPrice implements java.lang.Cloneable, java.io.Serializable
     
     private static final GoodsPrice __nullMarshalValue = new GoodsPrice();
 
-    public static final long serialVersionUID = -235381706L;
+    public static final long serialVersionUID = 4761289195219606582L;
 }
