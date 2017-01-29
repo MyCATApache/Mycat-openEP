@@ -131,5 +131,5 @@ public class OrderedGoods implements java.lang.Cloneable, java.io.Serializable
     
     private static final OrderedGoods __nullMarshalValue = new OrderedGoods();
 
-    public static final long serialVersionUID = 1473674411L;
+    public static final long serialVersionUID = 945151256250711211L;
 }

@@ -121,5 +121,5 @@ public class StorageChangeResult implements java.lang.Cloneable, java.io.Seriali
     
     private static final StorageChangeResult __nullMarshalValue = new StorageChangeResult();
 
-    public static final long serialVersionUID = 2044886046L;
+    public static final long serialVersionUID = -3292786131981927394L;
 }

@@ -145,5 +145,5 @@ public class StorageQuery implements java.lang.Cloneable, java.io.Serializable
     
     private static final StorageQuery __nullMarshalValue = new StorageQuery();
 
-    public static final long serialVersionUID = 759219285L;
+    public static final long serialVersionUID = 206817712742122581L;
 }

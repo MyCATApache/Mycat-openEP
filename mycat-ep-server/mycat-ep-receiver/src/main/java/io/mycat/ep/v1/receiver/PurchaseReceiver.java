@@ -253,5 +253,5 @@ public class PurchaseReceiver implements java.lang.Cloneable, java.io.Serializab
     
     private static final PurchaseReceiver __nullMarshalValue = new PurchaseReceiver();
 
-    public static final long serialVersionUID = 1063308179L;
+    public static final long serialVersionUID = -1388992675866162285L;
 }

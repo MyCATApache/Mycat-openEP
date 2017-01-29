@@ -299,5 +299,5 @@ public class ClientInfo implements java.lang.Cloneable, java.io.Serializable
     
     private static final ClientInfo __nullMarshalValue = new ClientInfo();
 
-    public static final long serialVersionUID = -1606237512L;
+    public static final long serialVersionUID = 6887450403693314744L;
 }
