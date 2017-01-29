@@ -17,14 +17,14 @@
     </bean>
     <aop:config proxy-target-class="true">
         <aop:aspect ref="tokenValidationAop">
-             <aop:around method="validate" pointcut="execution(public * io.mycat.ep.v*.**.impl.*HandlerImpl.*(*))" />
+             <aop:around method="validate" pointcut="execution(public * io.mycat.ep.v*.**.impl.*HandlerImpl.*(..))" />
         </aop:aspect>
     </aop:config>
 
     <bean id="logAop" class="io.mycat.ep.common.aop.LogAop"></bean>
     <aop:config proxy-target-class="true">
         <aop:aspect ref="logAop">
-             <aop:around method="log" pointcut="execution(public * io.mycat.ep.v*.**.impl.*HandlerImpl.*(*))" />
+             <aop:around method="log" pointcut="execution(public * io.mycat.ep.v*.**.impl.*HandlerImpl.*(..))" />
         </aop:aspect>
     </aop:config>
 </beans>

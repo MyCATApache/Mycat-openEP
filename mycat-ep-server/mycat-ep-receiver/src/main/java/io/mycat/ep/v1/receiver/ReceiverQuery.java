@@ -135,5 +135,5 @@ public class ReceiverQuery implements java.lang.Cloneable, java.io.Serializable
     
     private static final ReceiverQuery __nullMarshalValue = new ReceiverQuery();
 
-    public static final long serialVersionUID = -1340027066L;
+    public static final long serialVersionUID = 2960654529275678534L;
 }

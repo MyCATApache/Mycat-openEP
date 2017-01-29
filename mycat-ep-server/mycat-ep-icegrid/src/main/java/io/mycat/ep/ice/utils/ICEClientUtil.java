@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 @Component
 public class ICEClientUtil {
 	private static volatile Ice.Communicator ic = null;
@@ -16,27 +17,29 @@ public class ICEClientUtil {
 	private static Map<Class, ObjectPrx> cls2PrxMap = new HashMap<Class, ObjectPrx>();
 	private static volatile long lastAccessTimestamp;
 	private static volatile MonitorThread nonitorThread;
-	private static long idleTimeOutSeconds = 0;
+	private static long idleTimeOutSeconds = 3000;
 	private static String iceLocator = null;
 	private static final String locatorKey = "--Ice.Default.Locator";
+	private static boolean isdebug = false;
+	private static String endpoint = null;
 
 	public static Ice.Communicator getICECommunictor() {
 		if (ic == null) {
 			synchronized (ICEClientUtil.class) {
 				if (ic == null) {
-					if (iceLocator == null) {
-						iceLocator = "MyIceGrid/Locator:tcp -h 127.0.0.1 -p 4061";
-					}
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-					System.out.println(sdf.format(new Date())+"\tIce client's locator is "
+					System.out.println(sdf.format(new Date()) + "\tIce client's locator is "
 							+ iceLocator
 							+ " proxy cache time out seconds :"
 							+ idleTimeOutSeconds);
 
-					String[] initParams = new String[] { locatorKey + "="
-							+ iceLocator };
-
-					ic = Ice.Util.initialize(initParams);
+					String[] initParams = new String[]{locatorKey + "="
+							+ iceLocator};
+					if (iceLocator == null) {
+						ic = Ice.Util.initialize();
+					} else {
+						ic = Ice.Util.initialize(initParams);
+					}
 					createMonitorThread();
 				}
 			}
@@ -81,21 +84,21 @@ public class ICEClientUtil {
 
 	/**
 	 * 仅限于Ice服务内部之间非异步方法的场景
-	 * 
+	 *
 	 * @param communicator
 	 * @param serviceCls
 	 * @return ObjectPrx
 	 */
 	@SuppressWarnings("rawtypes")
 	public static ObjectPrx getSerivcePrx(Ice.Communicator communicator,
-			Class serviceCls,String version) {
-		return createIceProxy(communicator, serviceCls,version);
+										  Class serviceCls, String version) {
+		return createIceProxy(communicator, serviceCls, version);
 
 	}
 
 	@SuppressWarnings("rawtypes")
 	private static ObjectPrx createIceProxy(Ice.Communicator communicator,
-			Class serviceCls,String Version) {
+											Class serviceCls, String Version) {
 		ObjectPrx proxy = null;
 		String clsName = serviceCls.getName();
 		String serviceName = serviceCls.getSimpleName();
@@ -107,12 +110,16 @@ public class ICEClientUtil {
 		String realSvName = serviceName.substring(0, pos);
 
 		try {
+			ObjectPrx base = null;
+			if (!isdebug)
+				base = communicator.stringToProxy(realSvName);
+			else
+				base = communicator.stringToProxy(realSvName + ":" + endpoint);
 
-			ObjectPrx base = communicator.stringToProxy(realSvName);
 			proxy = (ObjectPrx) Class.forName(clsName + "Helper").newInstance();
 			Method m1 = proxy.getClass().getDeclaredMethod("checkedCast",
-					ObjectPrx.class,String.class);
-			proxy = (ObjectPrx) m1.invoke(proxy, base,Version==null?null:Version.toUpperCase());
+					ObjectPrx.class, String.class);
+			proxy = (ObjectPrx) m1.invoke(proxy, base, Version == null ? null : Version.toUpperCase());
 			return proxy;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -127,22 +134,23 @@ public class ICEClientUtil {
 
 	/**
 	 * 用于客户端API获取ICE服务实例的场景
-	 * 
+	 *
 	 * @param serviceCls
 	 * @return ObjectPrx
 	 */
 	@SuppressWarnings("rawtypes")
-	public static ObjectPrx getSerivcePrx(Class serviceCls,String Version) {
+	public static ObjectPrx getSerivcePrx(Class serviceCls, String Version) {
 		ObjectPrx proxy = cls2PrxMap.get(serviceCls);
 		if (proxy != null) {
 			lastAccessTimestamp = System.currentTimeMillis();
 			return proxy;
 		}
-		proxy = createIceProxy(getICECommunictor(), serviceCls,Version);
+		proxy = createIceProxy(getICECommunictor(), serviceCls, Version);
 		cls2PrxMap.put(serviceCls, proxy);
 		lastAccessTimestamp = System.currentTimeMillis();
 		return proxy;
 	}
+
 
 	static class MonitorThread extends Thread {
 		public void run() {
@@ -162,13 +170,22 @@ public class ICEClientUtil {
 	}
 
 	@Value("${Ice.Default.Locator}")
-	private    void setIceLocator(String iceLocator) {
+	private void setIceLocator(String iceLocator) {
 		ICEClientUtil.iceLocator = iceLocator;
 	}
 
 	@Value("${Ice.idleTimeOutSeconds}")
-	private    void setIdleTimeOutSeconds(long idleTimeOutSeconds) {
+	private void setIdleTimeOutSeconds(long idleTimeOutSeconds) {
 		ICEClientUtil.idleTimeOutSeconds = idleTimeOutSeconds;
 
+	}
+
+	@Value("${Ice.debug}")
+	public static void setIsdebug(boolean isdebug) {
+		ICEClientUtil.isdebug = isdebug;
+	}
+
+	public static void setEndpoint(String endpoint) {
+		ICEClientUtil.endpoint = endpoint;
 	}
 }

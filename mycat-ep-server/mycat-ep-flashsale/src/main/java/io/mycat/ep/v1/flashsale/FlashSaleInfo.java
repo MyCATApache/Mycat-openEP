@@ -145,5 +145,5 @@ public class FlashSaleInfo implements java.lang.Cloneable, java.io.Serializable
     
     private static final FlashSaleInfo __nullMarshalValue = new FlashSaleInfo();
 
-    public static final long serialVersionUID = -1604454824L;
+    public static final long serialVersionUID = -7465531457094683048L;
 }

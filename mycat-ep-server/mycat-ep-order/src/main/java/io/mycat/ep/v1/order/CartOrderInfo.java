@@ -257,5 +257,5 @@ public class CartOrderInfo implements java.lang.Cloneable, java.io.Serializable
     
     private static final CartOrderInfo __nullMarshalValue = new CartOrderInfo();
 
-    public static final long serialVersionUID = 1294329382L;
+    public static final long serialVersionUID = 8714373385135973926L;
 }
